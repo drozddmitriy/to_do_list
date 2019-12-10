@@ -1,5 +1,5 @@
 class Api::V1::ProjectsController < ApplicationController
-  before_action :set_project
+  before_action :find_project, except: %i[create index]
 
   def index
     @projects = Project.all
@@ -34,10 +34,10 @@ class Api::V1::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.permit(:name)
+    params.permit(:name, :user_id)
   end
 
-  def set_project
+  def find_project
     @project = Project.find_by(id: params[:id])
   end
 end
