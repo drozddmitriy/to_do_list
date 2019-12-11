@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  before_action :authorize_request
+  attr_reader :current_user
 
   def not_found
     render json: { error: 'not_found' }

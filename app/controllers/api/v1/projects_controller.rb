@@ -26,9 +26,11 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def update
-    @project.update(project_params)
-
-    render json: @project, status: :ok
+    if @project.update(project_params)
+      render json: @project, status: :ok
+    else
+      render json: @project.errors, status: :unprocessable_entity
+    end
   end
 
   private
