@@ -2,7 +2,7 @@ class Api::V1::ProjectsController < ApplicationController
   before_action :find_project, except: %i[create index]
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects.all
 
     render json: @projects, status: :ok
   end
@@ -13,10 +13,13 @@ class Api::V1::ProjectsController < ApplicationController
 
 
   def create
-    @project = Project.new(project_params)
-    @project.save
+    @project = current_user.projects.build(project_params)
 
-    render json: @project, status: :created
+    if @project.save
+      render json: @project, status: :created
+    else
+      render json: @project.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -40,6 +43,6 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def find_project
-    @project = Project.find_by(id: params[:id])
+    @project = current_user.projects.find_by(id: params[:id])
   end
 end
