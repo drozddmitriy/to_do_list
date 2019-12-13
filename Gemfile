@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'fog-core', '2.1.0'
+gem 'fog-google'
+gem 'google-cloud-storage', '~> 1.11', require: false
+gem 'figaro'
 gem 'carrierwave', '~> 2.0'
 gem 'cancancan'
 gem 'acts_as_list'
