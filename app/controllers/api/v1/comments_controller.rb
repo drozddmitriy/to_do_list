@@ -1,4 +1,5 @@
 class Api::V1::CommentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_current_task
   before_action :find_comment, except: %i[create index]
 
@@ -13,7 +14,6 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def create
-    binding.pry
     @comment = @task.comments.build(comment_params)
 
     if @comment.save

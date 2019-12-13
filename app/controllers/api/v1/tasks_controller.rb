@@ -1,4 +1,5 @@
 class Api::V1::TasksController < ApplicationController
+  load_and_authorize_resource
   before_action :set_current_project
   before_action :find_task, except: %i[create index]
 

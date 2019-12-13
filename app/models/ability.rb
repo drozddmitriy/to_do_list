@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+      user ||= User.new # guest user (not logged in)
+      if user.is_a?(User) && user.persisted?
+        can %i[create read update destroy], Project, user_id: user.id
+        can %i[create read update destroy], Task, project: { user_id: user.id }
+        can %i[create read update destroy], Comment, task: { project: { user_id: user.id } }
+      end
+  end
+end

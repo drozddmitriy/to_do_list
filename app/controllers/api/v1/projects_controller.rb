@@ -1,4 +1,5 @@
 class Api::V1::ProjectsController < ApplicationController
+  load_and_authorize_resource
   before_action :find_project, except: %i[create index]
 
   def index
@@ -10,7 +11,6 @@ class Api::V1::ProjectsController < ApplicationController
   def show
     render json: @project, status: :ok
   end
-
 
   def create
     @project = current_user.projects.build(project_params)
