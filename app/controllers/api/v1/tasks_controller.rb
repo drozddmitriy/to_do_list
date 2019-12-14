@@ -30,7 +30,7 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def update
-    set_position(params[:move]) if params[:move]
+    position(params[:move]) if params[:move]
 
     if @task.update(task_params)
       render json: @task, status: :ok
@@ -53,7 +53,7 @@ class Api::V1::TasksController < ApplicationController
     params.permit(:name, :project_id, :complete, :deadline)
   end
 
-  def set_position(move)
+  def position(move)
     case move
     when 'up' then @task.move_higher
     when 'down' then @task.move_lower
