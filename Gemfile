@@ -35,7 +35,7 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'json_matchers'
+  gem 'dox', require: false
   gem 'shoulda-matchers'
 end
 
