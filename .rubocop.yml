@@ -9,10 +9,9 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 120
+  Max: 130
 
 Metrics/BlockLength:
-  Max: 30
   ExcludedMethods: ['describe']
 
 Documentation:
@@ -23,6 +22,9 @@ Style/ClassAndModuleChildren:
 
 Metrics/AbcSize:
   Max: 25
+
+RSpec/MultipleExpectations:
+  Max: 2
 
 AllCops:
   Exclude:

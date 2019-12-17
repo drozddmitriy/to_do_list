@@ -1,7 +1,6 @@
 class Api::V1::AuthenticationController < ApplicationController
   before_action :authorize_request, except: :login
 
-  # POST /auth/login
   def login
     @user = User.find_by!(username: params[:username])
     if @user&.authenticate(params[:password])
@@ -10,7 +9,7 @@ class Api::V1::AuthenticationController < ApplicationController
       render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
                      username: @user.username }, status: :ok
     else
-      render json: { error: 'unauthorized' }, status: :unauthorized
+      render json: { error: 'Couldn\'t find User' }, status: :unauthorized
     end
   end
 

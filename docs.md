@@ -1,5 +1,40 @@
 
 
+# Group Authentication
+
+
+## Users [/api/v1/auth/login]
+
+
+###  [POST /api/v1/auth/login]
+
+
++ Request log in user
+**POST**&nbsp;&nbsp;`/api/v1/auth/login`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            username=username&password=password
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzY2Nzk3NDF9.y4YSJfhwrkvKUwPLUS3xFerZ0wrJrbUW6fAwG_RjTyU",
+              "exp": "12-18-2019 14:35",
+              "username": "username"
+            }
+
 # Group Comments
 
 
@@ -35,8 +70,8 @@
                   "url": "/uploads/comment/file/1/test.jpg"
                 },
                 "task_id": 1,
-                "created_at": "2019-12-17T10:20:52.534Z",
-                "updated_at": "2019-12-17T10:20:52.534Z"
+                "created_at": "2019-12-17T14:35:41.082Z",
+                "updated_at": "2019-12-17T14:35:41.082Z"
               },
               {
                 "id": 2,
@@ -45,8 +80,8 @@
                   "url": "/uploads/comment/file/2/test.jpg"
                 },
                 "task_id": 1,
-                "created_at": "2019-12-17T10:20:52.539Z",
-                "updated_at": "2019-12-17T10:20:52.539Z"
+                "created_at": "2019-12-17T14:35:41.088Z",
+                "updated_at": "2019-12-17T14:35:41.088Z"
               },
               {
                 "id": 3,
@@ -55,8 +90,8 @@
                   "url": "/uploads/comment/file/3/test.jpg"
                 },
                 "task_id": 1,
-                "created_at": "2019-12-17T10:20:52.544Z",
-                "updated_at": "2019-12-17T10:20:52.544Z"
+                "created_at": "2019-12-17T14:35:41.092Z",
+                "updated_at": "2019-12-17T14:35:41.092Z"
               }
             ]
 
@@ -76,7 +111,7 @@
 
     + Body
 
-            text=Comment_test_text&file=%23%3CFile%3A0x0000558a98df50c0%3E
+            text=Comment_test_text&file=%23%3CFile%3A0x00005589cf963508%3E
 
 + Response 201
 
@@ -93,8 +128,8 @@
                 "url": null
               },
               "task_id": 2,
-              "created_at": "2019-12-17T10:20:52.627Z",
-              "updated_at": "2019-12-17T10:20:52.627Z"
+              "created_at": "2019-12-17T14:35:41.152Z",
+              "updated_at": "2019-12-17T14:35:41.152Z"
             }
 
 ### Edit a comment [PUT /api/v1/projects/{project_id}/tasks/{task_id}/comments/{id}]
@@ -131,8 +166,8 @@
               "file": {
                 "url": "/uploads/comment/file/11/test.jpg"
               },
-              "created_at": "2019-12-17T10:20:52.661Z",
-              "updated_at": "2019-12-17T10:20:52.673Z"
+              "created_at": "2019-12-17T14:35:41.184Z",
+              "updated_at": "2019-12-17T14:35:41.197Z"
             }
 
 ### Get a comment [GET /api/v1/projects/{project_id}/tasks/{task_id}/comments/{id}]
@@ -143,7 +178,7 @@
     + id: `15` (number, required)
 
 + Request get comment
-**GET**&nbsp;&nbsp;`/api/v1/projects/4/tasks/4/comments/15?file=#<File:0x0000558a987e1580>&text=Comment_test_text`
+**GET**&nbsp;&nbsp;`/api/v1/projects/4/tasks/4/comments/15?file=#<File:0x00005589cdc61068>&text=Comment_test_text`
 
     + Headers
 
@@ -164,8 +199,8 @@
                 "url": "/uploads/comment/file/15/test.jpg"
               },
               "task_id": 4,
-              "created_at": "2019-12-17T10:20:52.708Z",
-              "updated_at": "2019-12-17T10:20:52.708Z"
+              "created_at": "2019-12-17T14:35:41.230Z",
+              "updated_at": "2019-12-17T14:35:41.230Z"
             }
 
 ### Delete a comment [DELETE /api/v1/projects/{project_id}/tasks/{task_id}/comments/{id}]
@@ -217,23 +252,23 @@
               {
                 "id": 6,
                 "name": "Project 6",
-                "created_at": "2019-12-17T10:20:52.771Z",
-                "updated_at": "2019-12-17T10:20:52.771Z",
-                "user_id": 6
+                "created_at": "2019-12-17T14:35:41.290Z",
+                "updated_at": "2019-12-17T14:35:41.290Z",
+                "user_id": 7
               },
               {
                 "id": 7,
                 "name": "Project 7",
-                "created_at": "2019-12-17T10:20:52.773Z",
-                "updated_at": "2019-12-17T10:20:52.773Z",
-                "user_id": 6
+                "created_at": "2019-12-17T14:35:41.292Z",
+                "updated_at": "2019-12-17T14:35:41.292Z",
+                "user_id": 7
               },
               {
                 "id": 8,
                 "name": "Project 8",
-                "created_at": "2019-12-17T10:20:52.776Z",
-                "updated_at": "2019-12-17T10:20:52.776Z",
-                "user_id": 6
+                "created_at": "2019-12-17T14:35:41.294Z",
+                "updated_at": "2019-12-17T14:35:41.294Z",
+                "user_id": 7
               }
             ]
 
@@ -263,9 +298,9 @@
             {
               "id": 12,
               "name": "Project 12",
-              "created_at": "2019-12-17T10:20:52.804Z",
-              "updated_at": "2019-12-17T10:20:52.804Z",
-              "user_id": 7
+              "created_at": "2019-12-17T14:35:41.330Z",
+              "updated_at": "2019-12-17T14:35:41.330Z",
+              "user_id": 8
             }
 
 ### Edit a project [PUT /api/v1/projects/{id}]
@@ -294,11 +329,11 @@
     + Body
 
             {
-              "user_id": 8,
+              "user_id": 9,
               "id": 16,
               "name": "Test_name",
-              "created_at": "2019-12-17T10:20:52.821Z",
-              "updated_at": "2019-12-17T10:20:52.828Z"
+              "created_at": "2019-12-17T14:35:41.347Z",
+              "updated_at": "2019-12-17T14:35:41.354Z"
             }
 
 ### Get a project [GET /api/v1/projects/{id}]
@@ -324,9 +359,9 @@
             {
               "id": 20,
               "name": "Project 20",
-              "created_at": "2019-12-17T10:20:52.844Z",
-              "updated_at": "2019-12-17T10:20:52.844Z",
-              "user_id": 9
+              "created_at": "2019-12-17T14:35:41.370Z",
+              "updated_at": "2019-12-17T14:35:41.370Z",
+              "user_id": 10
             }
 
 ### Delete a project [DELETE /api/v1/projects/{id}]
@@ -379,8 +414,8 @@
                 "id": 6,
                 "name": "Task_test",
                 "project_id": 24,
-                "created_at": "2019-12-17T10:20:52.886Z",
-                "updated_at": "2019-12-17T10:20:52.886Z",
+                "created_at": "2019-12-17T14:35:41.410Z",
+                "updated_at": "2019-12-17T14:35:41.410Z",
                 "complete": false,
                 "position": 1,
                 "deadline": null
@@ -389,8 +424,8 @@
                 "id": 7,
                 "name": "Task_test",
                 "project_id": 24,
-                "created_at": "2019-12-17T10:20:52.889Z",
-                "updated_at": "2019-12-17T10:20:52.889Z",
+                "created_at": "2019-12-17T14:35:41.413Z",
+                "updated_at": "2019-12-17T14:35:41.413Z",
                 "complete": false,
                 "position": 2,
                 "deadline": null
@@ -399,8 +434,8 @@
                 "id": 8,
                 "name": "Task_test",
                 "project_id": 24,
-                "created_at": "2019-12-17T10:20:52.893Z",
-                "updated_at": "2019-12-17T10:20:52.893Z",
+                "created_at": "2019-12-17T14:35:41.417Z",
+                "updated_at": "2019-12-17T14:35:41.417Z",
                 "complete": false,
                 "position": 3,
                 "deadline": null
@@ -436,8 +471,8 @@
               "id": 12,
               "name": "Task_test",
               "project_id": 25,
-              "created_at": "2019-12-17T10:20:52.933Z",
-              "updated_at": "2019-12-17T10:20:52.933Z",
+              "created_at": "2019-12-17T14:35:41.456Z",
+              "updated_at": "2019-12-17T14:35:41.456Z",
               "complete": false,
               "position": 4,
               "deadline": null
@@ -474,8 +509,8 @@
               "id": 16,
               "name": "Test_name",
               "position": 4,
-              "created_at": "2019-12-17T10:20:52.962Z",
-              "updated_at": "2019-12-17T10:20:52.974Z",
+              "created_at": "2019-12-17T14:35:41.479Z",
+              "updated_at": "2019-12-17T14:35:41.490Z",
               "complete": false,
               "deadline": null
             }
@@ -505,8 +540,8 @@
               "id": 20,
               "name": "Task_test",
               "project_id": 27,
-              "created_at": "2019-12-17T10:20:52.997Z",
-              "updated_at": "2019-12-17T10:20:52.997Z",
+              "created_at": "2019-12-17T14:35:41.512Z",
+              "updated_at": "2019-12-17T14:35:41.512Z",
               "complete": false,
               "position": 4,
               "deadline": null
@@ -531,3 +566,40 @@
     + Headers
 
             Content-Type: application/json
+
+# Group Users
+
+
+## Users [/api/v1/users]
+
+
+### Create a user [POST /api/v1/users]
+
+
++ Request register new user
+**POST**&nbsp;&nbsp;`/api/v1/users`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            username=username&password=password&password_confirmation=password
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "id": 17,
+              "username": "username",
+              "password_digest": "$2a$04$wjldHWtLBNnaSFQ9TnhV1eCJnoE4kcjufxBcWq9y139ZH85GfY1FO",
+              "created_at": "2019-12-17T14:35:41.565Z",
+              "updated_at": "2019-12-17T14:35:41.565Z"
+            }

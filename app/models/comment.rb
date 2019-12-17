@@ -3,5 +3,5 @@ class Comment < ApplicationRecord
   belongs_to :task
 
   validates :text, presence: true
-  validates_size_of :file, maximum: 10.megabytes
+  validates :file, length: { maximum: 10.megabytes }
 end
