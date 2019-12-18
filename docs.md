@@ -30,8 +30,8 @@
     + Body
 
             {
-              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzY2Nzk3NDF9.y4YSJfhwrkvKUwPLUS3xFerZ0wrJrbUW6fAwG_RjTyU",
-              "exp": "12-18-2019 14:35",
+              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzY3Njg2ODZ9.c9BN4Djj0goP3YVpYDFL1Ihv39iI33EWVUVltQP5NtU",
+              "exp": "12-19-2019 15:18",
               "username": "username"
             }
 
@@ -70,8 +70,8 @@
                   "url": "/uploads/comment/file/1/test.jpg"
                 },
                 "task_id": 1,
-                "created_at": "2019-12-17T14:35:41.082Z",
-                "updated_at": "2019-12-17T14:35:41.082Z"
+                "created_at": "2019-12-18T15:18:06.379Z",
+                "updated_at": "2019-12-18T15:18:06.379Z"
               },
               {
                 "id": 2,
@@ -80,8 +80,8 @@
                   "url": "/uploads/comment/file/2/test.jpg"
                 },
                 "task_id": 1,
-                "created_at": "2019-12-17T14:35:41.088Z",
-                "updated_at": "2019-12-17T14:35:41.088Z"
+                "created_at": "2019-12-18T15:18:06.385Z",
+                "updated_at": "2019-12-18T15:18:06.385Z"
               },
               {
                 "id": 3,
@@ -90,8 +90,8 @@
                   "url": "/uploads/comment/file/3/test.jpg"
                 },
                 "task_id": 1,
-                "created_at": "2019-12-17T14:35:41.092Z",
-                "updated_at": "2019-12-17T14:35:41.092Z"
+                "created_at": "2019-12-18T15:18:06.390Z",
+                "updated_at": "2019-12-18T15:18:06.390Z"
               }
             ]
 
@@ -111,7 +111,7 @@
 
     + Body
 
-            text=Comment_test_text&file=%23%3CFile%3A0x00005589cf963508%3E
+            text=Comment_test_text&file=%23%3CFile%3A0x000055b4bd90eaa8%3E
 
 + Response 201
 
@@ -128,8 +128,8 @@
                 "url": null
               },
               "task_id": 2,
-              "created_at": "2019-12-17T14:35:41.152Z",
-              "updated_at": "2019-12-17T14:35:41.152Z"
+              "created_at": "2019-12-18T15:18:06.461Z",
+              "updated_at": "2019-12-18T15:18:06.461Z"
             }
 
 ### Edit a comment [PUT /api/v1/projects/{project_id}/tasks/{task_id}/comments/{id}]
@@ -166,8 +166,8 @@
               "file": {
                 "url": "/uploads/comment/file/11/test.jpg"
               },
-              "created_at": "2019-12-17T14:35:41.184Z",
-              "updated_at": "2019-12-17T14:35:41.197Z"
+              "created_at": "2019-12-18T15:18:06.505Z",
+              "updated_at": "2019-12-18T15:18:06.519Z"
             }
 
 ### Get a comment [GET /api/v1/projects/{project_id}/tasks/{task_id}/comments/{id}]
@@ -178,7 +178,7 @@
     + id: `15` (number, required)
 
 + Request get comment
-**GET**&nbsp;&nbsp;`/api/v1/projects/4/tasks/4/comments/15?file=#<File:0x00005589cdc61068>&text=Comment_test_text`
+**GET**&nbsp;&nbsp;`/api/v1/projects/4/tasks/4/comments/15?file=#<File:0x000055b4c112a748>&text=Comment_test_text`
 
     + Headers
 
@@ -199,8 +199,8 @@
                 "url": "/uploads/comment/file/15/test.jpg"
               },
               "task_id": 4,
-              "created_at": "2019-12-17T14:35:41.230Z",
-              "updated_at": "2019-12-17T14:35:41.230Z"
+              "created_at": "2019-12-18T15:18:06.552Z",
+              "updated_at": "2019-12-18T15:18:06.552Z"
             }
 
 ### Delete a comment [DELETE /api/v1/projects/{project_id}/tasks/{task_id}/comments/{id}]
@@ -252,22 +252,22 @@
               {
                 "id": 6,
                 "name": "Project 6",
-                "created_at": "2019-12-17T14:35:41.290Z",
-                "updated_at": "2019-12-17T14:35:41.290Z",
+                "created_at": "2019-12-18T15:18:06.612Z",
+                "updated_at": "2019-12-18T15:18:06.612Z",
                 "user_id": 7
               },
               {
                 "id": 7,
                 "name": "Project 7",
-                "created_at": "2019-12-17T14:35:41.292Z",
-                "updated_at": "2019-12-17T14:35:41.292Z",
+                "created_at": "2019-12-18T15:18:06.615Z",
+                "updated_at": "2019-12-18T15:18:06.615Z",
                 "user_id": 7
               },
               {
                 "id": 8,
                 "name": "Project 8",
-                "created_at": "2019-12-17T14:35:41.294Z",
-                "updated_at": "2019-12-17T14:35:41.294Z",
+                "created_at": "2019-12-18T15:18:06.617Z",
+                "updated_at": "2019-12-18T15:18:06.617Z",
                 "user_id": 7
               }
             ]
@@ -298,8 +298,8 @@
             {
               "id": 12,
               "name": "Project 12",
-              "created_at": "2019-12-17T14:35:41.330Z",
-              "updated_at": "2019-12-17T14:35:41.330Z",
+              "created_at": "2019-12-18T15:18:06.646Z",
+              "updated_at": "2019-12-18T15:18:06.646Z",
               "user_id": 8
             }
 
@@ -332,8 +332,8 @@
               "user_id": 9,
               "id": 16,
               "name": "Test_name",
-              "created_at": "2019-12-17T14:35:41.347Z",
-              "updated_at": "2019-12-17T14:35:41.354Z"
+              "created_at": "2019-12-18T15:18:06.662Z",
+              "updated_at": "2019-12-18T15:18:06.670Z"
             }
 
 ### Get a project [GET /api/v1/projects/{id}]
@@ -359,8 +359,8 @@
             {
               "id": 20,
               "name": "Project 20",
-              "created_at": "2019-12-17T14:35:41.370Z",
-              "updated_at": "2019-12-17T14:35:41.370Z",
+              "created_at": "2019-12-18T15:18:06.686Z",
+              "updated_at": "2019-12-18T15:18:06.686Z",
               "user_id": 10
             }
 
@@ -414,8 +414,8 @@
                 "id": 6,
                 "name": "Task_test",
                 "project_id": 24,
-                "created_at": "2019-12-17T14:35:41.410Z",
-                "updated_at": "2019-12-17T14:35:41.410Z",
+                "created_at": "2019-12-18T15:18:06.726Z",
+                "updated_at": "2019-12-18T15:18:06.726Z",
                 "complete": false,
                 "position": 1,
                 "deadline": null
@@ -424,8 +424,8 @@
                 "id": 7,
                 "name": "Task_test",
                 "project_id": 24,
-                "created_at": "2019-12-17T14:35:41.413Z",
-                "updated_at": "2019-12-17T14:35:41.413Z",
+                "created_at": "2019-12-18T15:18:06.730Z",
+                "updated_at": "2019-12-18T15:18:06.730Z",
                 "complete": false,
                 "position": 2,
                 "deadline": null
@@ -434,8 +434,8 @@
                 "id": 8,
                 "name": "Task_test",
                 "project_id": 24,
-                "created_at": "2019-12-17T14:35:41.417Z",
-                "updated_at": "2019-12-17T14:35:41.417Z",
+                "created_at": "2019-12-18T15:18:06.734Z",
+                "updated_at": "2019-12-18T15:18:06.734Z",
                 "complete": false,
                 "position": 3,
                 "deadline": null
@@ -471,8 +471,8 @@
               "id": 12,
               "name": "Task_test",
               "project_id": 25,
-              "created_at": "2019-12-17T14:35:41.456Z",
-              "updated_at": "2019-12-17T14:35:41.456Z",
+              "created_at": "2019-12-18T15:18:06.789Z",
+              "updated_at": "2019-12-18T15:18:06.789Z",
               "complete": false,
               "position": 4,
               "deadline": null
@@ -509,8 +509,8 @@
               "id": 16,
               "name": "Test_name",
               "position": 4,
-              "created_at": "2019-12-17T14:35:41.479Z",
-              "updated_at": "2019-12-17T14:35:41.490Z",
+              "created_at": "2019-12-18T15:18:06.815Z",
+              "updated_at": "2019-12-18T15:18:06.826Z",
               "complete": false,
               "deadline": null
             }
@@ -540,8 +540,8 @@
               "id": 20,
               "name": "Task_test",
               "project_id": 27,
-              "created_at": "2019-12-17T14:35:41.512Z",
-              "updated_at": "2019-12-17T14:35:41.512Z",
+              "created_at": "2019-12-18T15:18:06.849Z",
+              "updated_at": "2019-12-18T15:18:06.849Z",
               "complete": false,
               "position": 4,
               "deadline": null
@@ -599,7 +599,7 @@
             {
               "id": 17,
               "username": "username",
-              "password_digest": "$2a$04$wjldHWtLBNnaSFQ9TnhV1eCJnoE4kcjufxBcWq9y139ZH85GfY1FO",
-              "created_at": "2019-12-17T14:35:41.565Z",
-              "updated_at": "2019-12-17T14:35:41.565Z"
+              "password_digest": "$2a$04$T1rQPzFGJxAziGnXlzSbzOBXekmBkuQX/zGq8N5INdxHLPyns38P6",
+              "created_at": "2019-12-18T15:18:06.914Z",
+              "updated_at": "2019-12-18T15:18:06.914Z"
             }
