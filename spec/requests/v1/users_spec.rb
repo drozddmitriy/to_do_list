@@ -15,7 +15,7 @@ RSpec.describe 'V1::Users', type: :request do
     end
 
     it 'do not create user' do
-      post api_v1_auth_users_path, params: invalid_user
+      post api_v1_users_path, params: invalid_user
       expect(response).to have_http_status(422)
     end
   end
