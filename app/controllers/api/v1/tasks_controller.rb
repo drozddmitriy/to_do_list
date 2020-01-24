@@ -1,11 +1,7 @@
 class Api::V1::TasksController < ApplicationController
   load_and_authorize_resource
-  before_action :set_current_project
-  before_action :find_task, except: %i[create index]
 
   def index
-    @tasks = @project.tasks
-
     render json: @tasks, status: :ok
   end
 
@@ -14,8 +10,6 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def create
-    @task = @project.tasks.build(task_params)
-
     if @task.save
       render json: @task, status: :created
     else
@@ -40,14 +34,6 @@ class Api::V1::TasksController < ApplicationController
   end
 
   private
-
-  def set_current_project
-    @project = current_user.projects.find_by(id: params[:project_id])
-  end
-
-  def find_task
-    @task = @project.tasks.find_by(id: params[:id])
-  end
 
   def task_params
     params.permit(:name, :project_id, :complete, :deadline)

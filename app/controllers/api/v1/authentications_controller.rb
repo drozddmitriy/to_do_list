@@ -1,16 +1,21 @@
-class Api::V1::AuthenticationController < ApplicationController
-  before_action :authorize_request, except: :login
+class Api::V1::AuthenticationsController < ApplicationController
+  before_action :authorize_request, except: :create
 
-  def login
+  def create
     @user = User.find_by!(username: params[:username])
-    if @user&.authenticate(params[:password])
+    if @user.authenticate(params[:password])
       token = JsonWebToken.encode(user_id: @user.id)
       time = Time.zone.now + 24.hours.to_i
       render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
                      username: @user.username }, status: :ok
     else
-      render json: { error: 'Couldn\'t find User' }, status: :unauthorized
+      render json: { error: 'Invalid password' }, status: :unauthorized
     end
+  end
+
+  def destroy
+    Rails.cache.redis.setex(request.headers['Authorization'], 24.hours, :expired)
+    head :ok
   end
 
   private

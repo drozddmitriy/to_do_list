@@ -1,10 +1,7 @@
 class Api::V1::ProjectsController < ApplicationController
   load_and_authorize_resource
-  before_action :find_project, except: %i[create index]
 
   def index
-    @projects = current_user.projects.all
-
     render json: @projects, status: :ok
   end
 
@@ -13,8 +10,6 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.build(project_params)
-
     if @project.save
       render json: @project, status: :created
     else
@@ -39,10 +34,6 @@ class Api::V1::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.permit(:name, :user_id)
-  end
-
-  def find_project
-    @project = current_user.projects.find_by(id: params[:id])
+    params.permit(:name)
   end
 end

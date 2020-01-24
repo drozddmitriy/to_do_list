@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :users, param: :_username
-      post '/auth/login', to: 'authentication#login'
-
-      root to: 'projects#index'
+      resources :users, only: :create
+      resource :authentications, only: %i[create destroy]
 
       resources :projects do
-        resources :tasks do
+        resources :tasks, shallow: true do
           resources :comments
         end
       end

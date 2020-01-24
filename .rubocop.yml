@@ -9,10 +9,13 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 130
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
 
 Metrics/BlockLength:
-  ExcludedMethods: ['describe']
+  Exclude:
+    - 'spec/**/*'
 
 Documentation:
   Enabled: false
@@ -20,11 +23,9 @@ Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Metrics/AbcSize:
-  Max: 25
-
 RSpec/MultipleExpectations:
-  Max: 2
+  Exclude:
+    - 'spec/**/*'
 
 AllCops:
   Exclude:
@@ -34,5 +35,4 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/*'
-    - 'test/**/*'
     - 'spec/rails_helper.rb'

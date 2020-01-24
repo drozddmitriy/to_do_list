@@ -1,6 +1,6 @@
 module Docs
   module V1
-    module Authentication
+    module Authentications
       extend Dox::DSL::Syntax
 
       document :api do
@@ -10,8 +10,12 @@ module Docs
         end
       end
 
-      document :login do
+      document :create do
         action 'Login user'
+      end
+
+      document :delete do
+        action 'Logout user'
       end
     end
   end

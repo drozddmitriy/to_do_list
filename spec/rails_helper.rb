@@ -4,6 +4,7 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+require 'json_matchers/rspec'
 require 'database_cleaner'
 require 'dox'
 
@@ -48,3 +49,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+JsonMatchers.schema_root = 'spec/support/api/schemas'
