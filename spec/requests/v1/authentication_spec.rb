@@ -2,11 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'V1::Projects API', type: :request do
   include Docs::V1::Authentications::Api
-  let(:user) { create(:user) }
-  let(:invalid_user) { { username: user.username, password: '' } }
 
-  describe 'POST /api/v1/authentication' do
-    it 'log in user', :dox do
+  describe 'POST /api/v1/authentications' do
+    let(:user) { create(:user) }
+    let(:invalid_user) { { username: user.username, password: '' } }
+
+    it 'login user', :dox do
+      include Docs::V1::Authentications::Create
       post api_v1_authentications_path, params: { username: user.username, password: user.password }
       expect(response).to have_http_status(:ok)
       expect(response.body).to include(user.username)
@@ -16,6 +18,17 @@ RSpec.describe 'V1::Projects API', type: :request do
       post api_v1_authentications_path, params: invalid_user
       expect(response).to have_http_status(:unauthorized)
       expect(response.body).to include('Invalid password')
+    end
+  end
+
+  describe 'DELETE /api/v1/authentications' do
+    let(:user) { create(:user) }
+    let(:headers) { { authorization: JsonWebToken.encode(user_id: user.id), accept: 'application/json' } }
+
+    it 'logout user', :dox do
+      include Docs::V1::Authentications::Delete
+      delete api_v1_authentications_path, headers: headers
+      expect(response).to have_http_status(:ok)
     end
   end
 end

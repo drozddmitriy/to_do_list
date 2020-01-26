@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
-    text { 'Comment_test_text' }
-    file { File.open(File.join(Rails.root, 'public/test.jpg')) }
+    text { FFaker::Lorem.phrase }
+    file { File.open(File.join(Rails.root, 'spec/fixtures/test.jpg')) }
   end
 end

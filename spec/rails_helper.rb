@@ -5,7 +5,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'json_matchers/rspec'
-require 'database_cleaner'
 require 'dox'
 
 Dir[Rails.root.join('spec/docs/**/*.rb')].each { |f| require f }

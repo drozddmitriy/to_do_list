@@ -4,9 +4,8 @@ class Api::V1::AuthenticationsController < ApplicationController
   def create
     @user = User.find_by!(username: params[:username])
     if @user.authenticate(params[:password])
-      token = JsonWebToken.encode(user_id: @user.id)
-      time = Time.zone.now + 24.hours.to_i
-      render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
+      auth = AuthenticationsService.new(@user)
+      render json: { token: auth.token, exp: auth.time,
                      username: @user.username }, status: :ok
     else
       render json: { error: 'Invalid password' }, status: :unauthorized
