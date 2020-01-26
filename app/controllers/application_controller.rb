@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
   end
 
   rescue_from CanCan::AccessDenied do |_error|
-    render json: { error: 'Access denied' }, status: :forbidden
+    render json: { error: I18n.t('can_can.error') }, status: :forbidden
   end
 
   rescue_from ActiveRecord::RecordNotFound do |error|
@@ -18,6 +18,6 @@ class ApplicationController < ActionController::API
   end
 
   rescue_from JWT::DecodeError do |_e|
-    render json: { e: 'Invalid token' }, status: :unauthorized
+    render json: { e: I18n.t('jwt.error') }, status: :unauthorized
   end
 end

@@ -8,7 +8,7 @@ class Api::V1::AuthenticationsController < ApplicationController
       render json: { token: auth.token, exp: auth.time,
                      username: @user.username }, status: :ok
     else
-      render json: { error: 'Invalid password' }, status: :unauthorized
+      render json: { error: I18n.t('authentications.error') }, status: :unauthorized
     end
   end
 
