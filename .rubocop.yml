@@ -23,6 +23,9 @@ Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+RSpec/AnyInstance:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Exclude:
     - 'spec/**/*'

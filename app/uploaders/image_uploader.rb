@@ -8,4 +8,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w[jpg jpeg gif png]
   end
+
+  def size_range
+    0..10.megabytes
+  end
 end
