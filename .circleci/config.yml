@@ -20,11 +20,13 @@ jobs:
           - v1-dependencies-
 
       - run:
+          name: install bundler
+          command: |
+            gem install bundler -v $(tail -n1 Gemfile.lock)
+
+      - run:
           name: install dependencies
           command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler -v '2.0.2'
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
