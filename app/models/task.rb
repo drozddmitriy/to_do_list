@@ -5,4 +5,9 @@ class Task < ApplicationRecord
   acts_as_list scope: :project
 
   validates :name, presence: true
+  validate :position_count, on: :update
+
+  def position_count
+    errors.add(:position, I18n.t('model.position_error')) if position > project.tasks.count
+  end
 end

@@ -17,7 +17,7 @@ RSpec.describe 'V1::Projects API', type: :request do
     it 'do not register user' do
       post api_v1_authentications_path, params: invalid_user
       expect(response).to have_http_status(:unauthorized)
-      expect(response.body).to include('Invalid password')
+      expect(response.body).to match(I18n.t('errors.authentications'))
     end
   end
 

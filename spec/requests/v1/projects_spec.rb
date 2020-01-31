@@ -6,7 +6,6 @@ RSpec.describe 'V1::Projects API', type: :request do
   let(:user) { create(:user) }
   let!(:projects) { create_list(:project, 3, user: user) }
   let(:project) { create(:project, user: user) }
-  let(:project_params) { attributes_for(:project) }
   let(:headers) { { authorization: JsonWebToken.encode(user_id: user.id), accept: 'application/json' } }
 
   describe 'GET /api/v1/projects' do
@@ -22,6 +21,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
   describe 'POST /api/v1/projects' do
     include Docs::V1::Projects::Create
+    let(:project_params) { attributes_for(:project) }
 
     it 'create project', :dox do
       expect { post api_v1_projects_path, headers: headers, params: project_params }.to change(Project, :count).by(1)
@@ -44,6 +44,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
   describe 'GET /api/v1/projects/:id' do
     include Docs::V1::Projects::Get
+    let(:project_params) { attributes_for(:project) }
 
     it 'get project', :dox do
       get api_v1_project_path(project), headers: headers, params: project_params

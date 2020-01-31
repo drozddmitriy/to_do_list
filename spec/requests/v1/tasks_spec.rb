@@ -2,12 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'V1::Tasks API', type: :request do
   include Docs::V1::Tasks::Api
-
   let(:user) { create(:user) }
   let(:project) { create(:project, user: user) }
   let!(:tasks) { create_list(:task, 3, project: project) }
-  let(:task) { create(:task, project: project) }
-  let(:task_params) { attributes_for(:task) }
+
   let(:headers) { { authorization: JsonWebToken.encode(user_id: user.id), accept: 'application/json' } }
 
   describe 'GET /api/v1/projects/:project_id/tasks' do
@@ -23,6 +21,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
   describe 'POST /api/v1/projects/:project_id/tasks' do
     include Docs::V1::Tasks::Create
+    let(:task_params) { attributes_for(:task) }
 
     it 'create task', :dox do
       expect do
@@ -36,18 +35,21 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
   describe 'PUT /api/v1/tasks/:id' do
     include Docs::V1::Tasks::Edit
+    let(:task) { create(:task, project: project) }
     let(:edite_task) { { name: 'Test_name' } }
 
     it 'update tasks', :dox do
       put api_v1_task_path(task), headers: headers, params: edite_task
       expect(response).to have_http_status(:ok)
-      expect(response.body).to include('Test_name')
+      expect(response.body).to include(edite_task[:name])
       expect(response).to match_json_schema('task')
     end
   end
 
   describe 'GET /api/v1/tasks/:id' do
     include Docs::V1::Tasks::Get
+    let(:task) { create(:task, project: project) }
+    let(:task_params) { attributes_for(:task) }
 
     it 'get task', :dox do
       get api_v1_task_path(task), headers: headers, params: task_params

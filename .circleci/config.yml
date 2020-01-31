@@ -22,7 +22,7 @@ jobs:
 
       - run:
           name: install bundler
-          command: gem install bundler -v 2.0.2
+          command: gem install bundler -v $(tail -1 Gemfile.lock | tr -d ' ')
 
       - run:
           name: install dependencies

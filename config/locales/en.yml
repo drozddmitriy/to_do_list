@@ -1,7 +1,7 @@
 en:
-  authentications:
-    error: 'Invalid password'
-  can_can:
-    error: 'Access denied'
-  jwt:
-    error: 'Invalid token'
+  errors:
+    authentications: 'Invalid password'
+    can_can: 'Access denied'
+    jwt: 'Invalid token'
+  model:
+    position_error: 'Cant be greater than tasks count'
