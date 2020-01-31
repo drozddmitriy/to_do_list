@@ -1,27 +1,29 @@
-class Api::V1::CommentsController < ApplicationController
-  load_and_authorize_resource
+module Api
+  module V1
+    class CommentsController < ApplicationController
+      load_and_authorize_resource
 
-  def index
-    render json: @comments, status: :ok
-  end
+      def index
+        render json: @comments
+      end
 
-  def create
-    if @comment.save
-      render json: @comment, status: :created
-    else
-      render json: @comment.errors, status: :unprocessable_entity
+      def create
+        if @comment.save
+          render json: @comment, status: :created
+        else
+          render json: @comment.errors, status: :unprocessable_entity
+        end
+      end
+
+      def destroy
+        head(:no_content) if @comment.destroy
+      end
+
+      private
+
+      def comment_params
+        params.permit(:text, :file, :task_id)
+      end
     end
-  end
-
-  def destroy
-    return head(:ok) if @comment.destroy
-
-    head(:unprocessable_entity)
-  end
-
-  private
-
-  def comment_params
-    params.permit(:text, :file, :task_id)
   end
 end

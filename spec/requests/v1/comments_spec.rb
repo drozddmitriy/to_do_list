@@ -40,7 +40,7 @@ RSpec.describe 'V1::Comments API', type: :request do
     before { delete api_v1_comment_path(id: comments.first.id), headers: headers }
 
     it 'delete comments' do
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

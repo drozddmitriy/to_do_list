@@ -57,7 +57,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
     it 'delete project', :dox do
       expect { delete api_v1_project_path(id: projects.first.id), headers: headers }.to change(Project, :count).by(-1)
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

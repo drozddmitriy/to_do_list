@@ -1,25 +1,29 @@
-class Api::V1::AuthenticationsController < ApplicationController
-  before_action :authorize_request, except: :create
+module Api
+  module V1
+    class AuthenticationsController < ApplicationController
+      skip_before_action :authorize_request, only: :create
 
-  def create
-    @user = User.find_by!(username: params[:username])
-    if @user.authenticate(params[:password])
-      auth = AuthenticationsService.new(@user)
-      render json: { token: auth.token, exp: auth.time,
-                     username: @user.username }, status: :ok
-    else
-      render json: { error: I18n.t('authentications.error') }, status: :unauthorized
+      def create
+        result = Authenticate.call(params: login_params)
+
+        if result.success?
+          render json: { token: result.token, exp: result.time,
+                         username: result.user_name }, status: :ok
+        else
+          render json: { error: I18n.t('authentications.error') }, status: :unauthorized
+        end
+      end
+
+      def destroy
+        Rails.cache.redis.setex(request.headers['Authorization'], 24.hours, :expired)
+        head :no_content
+      end
+
+      private
+
+      def login_params
+        params.permit(:username, :password)
+      end
     end
-  end
-
-  def destroy
-    Rails.cache.redis.setex(request.headers['Authorization'], 24.hours, :expired)
-    head :ok
-  end
-
-  private
-
-  def login_params
-    params.permit(:username, :password)
   end
 end

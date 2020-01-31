@@ -64,7 +64,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
         delete api_v1_task_path(id: tasks.first.id), headers: headers
       end.to change(Task, :count).by(-1)
 
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

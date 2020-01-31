@@ -28,7 +28,7 @@ RSpec.describe 'V1::Projects API', type: :request do
     it 'logout user', :dox do
       include Docs::V1::Authentications::Delete
       delete api_v1_authentications_path, headers: headers
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

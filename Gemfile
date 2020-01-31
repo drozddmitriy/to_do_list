@@ -1,6 +1,3 @@
-source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
 ruby '2.5.1'
 
 # Auth
@@ -19,18 +16,20 @@ gem 'fog-google'
 gem 'google-cloud-storage', '~> 1.11', require: false
 gem 'hiredis'
 gem 'redis'
-gem 'redis-rails'
 
 # Tools
 gem 'acts_as_list'
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'figaro'
+gem 'interactor', '~> 3.1', '>= 3.1.2'
+gem 'interactor-rails', '~> 2.2', '>= 2.2.1'
 gem 'jwt'
 gem 'rack-cors'
 
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'fasterer'
+  gem 'ffaker'
   gem 'pry'
   gem 'rspec-rails'
   gem 'rubocop'
@@ -47,7 +46,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'dox', require: false
-  gem 'ffaker'
   gem 'json_matchers', '~> 0.11.1'
   gem 'shoulda-matchers'
 end

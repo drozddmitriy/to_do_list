@@ -2,16 +2,11 @@ require:
   - rubocop-rspec
   - rubocop-rails
 
-Rails/FilePath:
-  Enabled: false
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
 Metrics/LineLength:
   Max: 120
-  Exclude:
-    - 'spec/**/*'
 
 Metrics/BlockLength:
   Exclude:
@@ -20,15 +15,11 @@ Metrics/BlockLength:
 Documentation:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  Enabled: false
-
 RSpec/AnyInstance:
   Enabled: false
 
 RSpec/MultipleExpectations:
-  Exclude:
-    - 'spec/**/*'
+  Enabled: false
 
 AllCops:
   Exclude:
