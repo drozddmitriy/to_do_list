@@ -4,5 +4,5 @@ class Comment < ApplicationRecord
 
   validates :text, presence: true
   validates_integrity_of :file
-  validates :file, length: { maximum: 10.megabytes }
+  validates_processing_of :file
 end

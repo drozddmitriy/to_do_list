@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'V1::Projects API', type: :request do
   include Docs::V1::Authentications::Api
 
@@ -17,7 +15,7 @@ RSpec.describe 'V1::Projects API', type: :request do
     it 'do not register user' do
       post api_v1_authentications_path, params: invalid_user
       expect(response).to have_http_status(:unauthorized)
-      expect(response.body).to match(I18n.t('errors.authentications'))
+      expect(response.body).to include(I18n.t('errors.messages.authentications_error'))
     end
   end
 

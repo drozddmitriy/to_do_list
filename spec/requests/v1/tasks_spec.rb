@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'V1::Tasks API', type: :request do
   include Docs::V1::Tasks::Api
   let(:user) { create(:user) }

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'V1::Comments API', type: :request do
   include Docs::V1::Comments::Api
 
@@ -34,7 +32,7 @@ RSpec.describe 'V1::Comments API', type: :request do
     end
   end
 
-  describe 'DELETE /api/v1/projects/:project_id/tasks/:task_id/comments/:id', :dox do
+  describe 'DELETE /api/v1/tasks/:task_id/comments/:id', :dox do
     include Docs::V1::Comments::Delete
 
     before { delete api_v1_comment_path(id: comments.first.id), headers: headers }

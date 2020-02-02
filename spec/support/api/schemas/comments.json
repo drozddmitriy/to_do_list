@@ -4,9 +4,7 @@
     "properties": {
       "id": { "type": "integer" },
       "text": { "type": "string" },
-      "file": {
-             "url": "string"
-           },
+      "file": { "url": "string" },
       "task_id": { "type": "integer" }
     }
   }

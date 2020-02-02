@@ -10,7 +10,7 @@ module Api
           render json: { token: result.token, exp: result.time,
                          username: result.user_name }, status: :ok
         else
-          render json: { error: I18n.t('errors.authentications') }, status: :unauthorized
+          render json: { error: I18n.t('errors.messages.authentications_error') }, status: :unauthorized
         end
       end
 

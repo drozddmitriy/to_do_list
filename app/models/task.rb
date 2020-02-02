@@ -8,6 +8,6 @@ class Task < ApplicationRecord
   validate :position_count, on: :update
 
   def position_count
-    errors.add(:position, I18n.t('model.position_error')) if position > project.tasks.count
+    errors.add(:position, :position_error) if position > project.tasks.count
   end
 end

@@ -8,7 +8,7 @@ module ErrorHandler
   end
 
   def can_can_error
-    render json: { error: I18n.t('errors.can_can') }, status: :forbidden
+    render json: { error: I18n.t('errors.messages.can_can_error') }, status: :forbidden
   end
 
   def active_record_error(error)
@@ -16,6 +16,6 @@ module ErrorHandler
   end
 
   def jwt_error
-    render json: { error: I18n.t('errors.jwt') }, status: :unauthorized
+    render json: { error: I18n.t('errors.messages.jwt_error') }, status: :unauthorized
   end
 end
