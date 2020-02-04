@@ -12,33 +12,53 @@ RSpec.describe 'V1::Comments API', type: :request do
   describe 'GET /api/v1/tasks/:task_id/comments' do
     include Docs::V1::Comments::Index
 
-    before { get api_v1_task_comments_path(task_id: task.id), headers: headers }
+    context 'with valid task_id', :dox do
+      before { get api_v1_task_comments_path(task_id: task.id), headers: headers }
 
-    it 'get comments', :dox do
-      expect(response).to have_http_status(:ok)
-      expect(response.parsed_body.size).to eq(3)
-      expect(response).to match_json_schema('comments')
+      it { expect(response).to have_http_status(:ok) }
+      it { expect(response.parsed_body.size).to eq(3) }
+      it { expect(response).to match_json_schema('comments') }
+    end
+
+    context 'with invalid task_id', :dox do
+      before { get api_v1_task_comments_path(task_id: 0), headers: headers }
+
+      it_behaves_like 'http status not_found'
     end
   end
 
   describe 'POST /api/v1/tasks/:task_id/comments' do
     include Docs::V1::Comments::Create
 
-    before { post api_v1_task_comments_path(task), headers: headers, params: comment_params }
+    context 'with valid params', :dox do
+      before { post api_v1_task_comments_path(task), headers: headers, params: comment_params }
 
-    it 'create comment', :dox do
-      expect(response).to have_http_status(:created)
-      expect(response).to match_json_schema('comment')
+      it { expect(response).to have_http_status(:created) }
+      it { expect(response).to match_json_schema('comment') }
+    end
+
+    context 'with invalid params', :dox do
+      let(:params) { { text: nil } }
+
+      before { post api_v1_task_comments_path(task), headers: headers, params: params }
+
+      it { expect(response).to have_http_status(:unprocessable_entity) }
     end
   end
 
-  describe 'DELETE /api/v1/tasks/:task_id/comments/:id', :dox do
+  describe 'DELETE /api/v1/tasks/:task_id/comments/:id' do
     include Docs::V1::Comments::Delete
 
-    before { delete api_v1_comment_path(id: comments.first.id), headers: headers }
+    context 'with valid id', :dox do
+      before { delete api_v1_comment_path(id: comments.first.id), headers: headers }
 
-    it 'delete comments' do
-      expect(response).to have_http_status(:no_content)
+      it { expect(response).to have_http_status(:no_content) }
+    end
+
+    context 'with invalid id', :dox do
+      before { delete api_v1_comment_path(id: 0), headers: headers }
+
+      it_behaves_like 'http status not_found'
     end
   end
 end

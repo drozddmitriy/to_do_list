@@ -15,7 +15,7 @@ class Authenticate
   end
 
   def time
-    context.time = (Time.zone.now + 24.hours).strftime('%m-%d-%Y %H:%M')
+    context.time = (Time.zone.now + JsonWebToken::EXP_PERIOD)
   end
 
   def token

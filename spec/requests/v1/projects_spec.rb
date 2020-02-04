@@ -19,44 +19,82 @@ RSpec.describe 'V1::Projects API', type: :request do
 
   describe 'POST /api/v1/projects' do
     include Docs::V1::Projects::Create
-    let(:project_params) { attributes_for(:project) }
 
-    it 'create project', :dox do
-      expect { post api_v1_projects_path, headers: headers, params: project_params }.to change(Project, :count).by(1)
-      expect(response).to have_http_status(:created)
-      expect(response).to match_json_schema('project')
+    context 'with valid params', :dox do
+      let(:project_params) { attributes_for(:project) }
+
+      it do
+        expect { post api_v1_projects_path, headers: headers, params: project_params }.to change(Project, :count).by(1)
+        expect(response).to have_http_status(:created)
+        expect(response).to match_json_schema('project')
+      end
+    end
+
+    context 'with invalid params', :dox do
+      let(:project_params) { { name: nil } }
+
+      before { post api_v1_projects_path, headers: headers, params: project_params }
+
+      it { expect(response).to have_http_status(:unprocessable_entity) }
     end
   end
 
   describe 'PUT /api/v1/projects/:id' do
     include Docs::V1::Projects::Edit
-    let(:edited_params) { { name: 'Test_name' } }
 
-    it 'edit project', :dox do
-      put api_v1_project_path(project), headers: headers, params: edited_params
-      expect(response.body).to include('Test_name')
-      expect(response).to have_http_status(:ok)
-      expect(response).to match_json_schema('project')
+    context 'with valid params', :dox do
+      let(:edited_params) { { name: 'Test_name' } }
+
+      it do
+        put api_v1_project_path(project), headers: headers, params: edited_params
+        expect(response.body).to include('Test_name')
+        expect(response).to have_http_status(:ok)
+        expect(response).to match_json_schema('project')
+      end
+    end
+
+    context 'with invalid params', :dox do
+      let(:project_params) { { name: nil } }
+
+      before { put api_v1_project_path(project), headers: headers, params: project_params }
+
+      it { expect(response).to have_http_status(:unprocessable_entity) }
     end
   end
 
   describe 'GET /api/v1/projects/:id' do
     include Docs::V1::Projects::Get
-    let(:project_params) { attributes_for(:project) }
+    context 'with valid id', :dox do
+      let(:project_params) { attributes_for(:project) }
 
-    it 'get project', :dox do
-      get api_v1_project_path(project), headers: headers, params: project_params
-      expect(response).to have_http_status(:ok)
-      expect(response).to match_json_schema('project')
+      it do
+        get api_v1_project_path(project), headers: headers, params: project_params
+        expect(response).to have_http_status(:ok)
+        expect(response).to match_json_schema('project')
+      end
+    end
+
+    context 'with invalid id', :dox do
+      before { get api_v1_project_path(id: 0), headers: headers }
+
+      it_behaves_like 'http status not_found'
     end
   end
 
   describe 'DELETE /api/v1/projects/:id' do
     include Docs::V1::Projects::Delete
 
-    it 'delete project', :dox do
-      expect { delete api_v1_project_path(id: projects.first.id), headers: headers }.to change(Project, :count).by(-1)
-      expect(response).to have_http_status(:no_content)
+    context 'with valid id', :dox do
+      it do
+        expect { delete api_v1_project_path(id: projects.first.id), headers: headers }.to change(Project, :count).by(-1)
+        expect(response).to have_http_status(:no_content)
+      end
+    end
+
+    context 'with invalid id', :dox do
+      before { delete api_v1_comment_path(id: 0), headers: headers }
+
+      it_behaves_like 'http status not_found'
     end
   end
 end

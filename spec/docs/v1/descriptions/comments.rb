@@ -14,16 +14,8 @@ module Docs
         action 'Get comments'
       end
 
-      document :get do
-        action 'Get a comment'
-      end
-
       document :create do
         action 'Create a comment'
-      end
-
-      document :edit do
-        action 'Edit a comment'
       end
 
       document :delete do

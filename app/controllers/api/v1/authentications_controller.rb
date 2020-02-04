@@ -15,7 +15,7 @@ module Api
       end
 
       def destroy
-        Rails.cache.redis.setex(request.headers['Authorization'], 24.hours, :expired)
+        Rails.cache.redis.setex(request.headers['Authorization'], JsonWebToken::EXP_PERIOD, :expired)
         head :no_content
       end
 

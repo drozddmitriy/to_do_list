@@ -1,7 +1,8 @@
 module Api
   module V1
     class CommentsController < ApplicationController
-      load_and_authorize_resource
+      load_and_authorize_resource :task
+      load_and_authorize_resource :comment, through: :task, shallow: true
 
       def index
         render json: @comments
