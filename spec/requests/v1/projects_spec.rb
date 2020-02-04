@@ -9,12 +9,11 @@ RSpec.describe 'V1::Projects API', type: :request do
   describe 'GET /api/v1/projects' do
     include Docs::V1::Projects::Index
 
-    it 'get projects', :dox do
-      get api_v1_projects_path, headers: headers
-      expect(response).to have_http_status(:ok)
-      expect(response.parsed_body.size).to eq(3)
-      expect(response).to match_json_schema('projects')
-    end
+    before { get api_v1_projects_path, headers: headers }
+
+    it { expect(response.parsed_body.size).to eq(3) }
+
+    it_behaves_like 'http status ok', 'projects'
   end
 
   describe 'POST /api/v1/projects' do
@@ -45,12 +44,11 @@ RSpec.describe 'V1::Projects API', type: :request do
     context 'with valid params', :dox do
       let(:edited_params) { { name: 'Test_name' } }
 
-      it do
-        put api_v1_project_path(project), headers: headers, params: edited_params
-        expect(response.body).to include('Test_name')
-        expect(response).to have_http_status(:ok)
-        expect(response).to match_json_schema('project')
-      end
+      before { put api_v1_project_path(project), headers: headers, params: edited_params }
+
+      it { expect(response.body).to include('Test_name') }
+
+      it_behaves_like 'http status ok', 'project'
     end
 
     context 'with invalid params', :dox do
@@ -67,11 +65,9 @@ RSpec.describe 'V1::Projects API', type: :request do
     context 'with valid id', :dox do
       let(:project_params) { attributes_for(:project) }
 
-      it do
-        get api_v1_project_path(project), headers: headers, params: project_params
-        expect(response).to have_http_status(:ok)
-        expect(response).to match_json_schema('project')
-      end
+      before { get api_v1_project_path(project), headers: headers, params: project_params }
+
+      it_behaves_like 'http status ok', 'project'
     end
 
     context 'with invalid id', :dox do

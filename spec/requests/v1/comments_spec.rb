@@ -15,9 +15,9 @@ RSpec.describe 'V1::Comments API', type: :request do
     context 'with valid task_id', :dox do
       before { get api_v1_task_comments_path(task_id: task.id), headers: headers }
 
-      it { expect(response).to have_http_status(:ok) }
       it { expect(response.parsed_body.size).to eq(3) }
-      it { expect(response).to match_json_schema('comments') }
+
+      it_behaves_like 'http status ok', 'comments'
     end
 
     context 'with invalid task_id', :dox do

@@ -10,12 +10,11 @@ RSpec.describe 'V1::Tasks API', type: :request do
     include Docs::V1::Tasks::Index
 
     context 'with valid project_id', :dox do
-      it do
-        get api_v1_project_tasks_path(project), headers: headers
-        expect(response).to have_http_status(:ok)
-        expect(response.parsed_body.size).to eq(3)
-        expect(response).to match_json_schema('tasks')
-      end
+      before { get api_v1_project_tasks_path(project), headers: headers }
+
+      it { expect(response.parsed_body.size).to eq(3) }
+
+      it_behaves_like 'http status ok', 'tasks'
     end
 
     context 'with invalid project_id' do
@@ -57,12 +56,11 @@ RSpec.describe 'V1::Tasks API', type: :request do
     context 'with valid params', :dox do
       let(:edite_task) { { name: 'Test_name' } }
 
-      it do
-        put api_v1_task_path(task), headers: headers, params: edite_task
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to include(edite_task[:name])
-        expect(response).to match_json_schema('task')
-      end
+      before { put api_v1_task_path(task), headers: headers, params: edite_task }
+
+      it { expect(response.body).to include(edite_task[:name]) }
+
+      it_behaves_like 'http status ok', 'task'
     end
 
     context 'with invalid params', :dox do
@@ -81,11 +79,9 @@ RSpec.describe 'V1::Tasks API', type: :request do
     context 'with valid id', :dox do
       let(:task_params) { attributes_for(:task) }
 
-      it do
-        get api_v1_task_path(task), headers: headers, params: task_params
-        expect(response).to have_http_status(:ok)
-        expect(response).to match_json_schema('task')
-      end
+      before { get api_v1_task_path(task), headers: headers, params: task_params }
+
+      it_behaves_like 'http status ok', 'task'
     end
 
     context 'with invalid id', :dox do
