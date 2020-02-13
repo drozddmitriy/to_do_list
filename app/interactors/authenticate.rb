@@ -3,14 +3,14 @@ class Authenticate
 
   def call
     context.user = User.find_by!(username: context.params[:username])
-    context.fail! unless authenticate?
+    context.fail! unless authenticated?
 
     time
     token
     user_name
   end
 
-  def authenticate?
+  def authenticated?
     context.user.authenticate(context.params[:password])
   end
 
