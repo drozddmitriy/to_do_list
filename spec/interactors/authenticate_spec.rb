@@ -7,10 +7,12 @@ RSpec.describe Authenticate, type: :interactor do
       let(:context) { described_class.call(params: valid_params) }
       let(:token) { JsonWebToken.encode(user_id: context.user.id) }
 
-      it { expect(context).to be_a_success }
-      it { expect(context).to have_attributes(user: user) }
-      it { expect(context).to have_attributes(user_name: user.username) }
-      it { expect(context).to have_attributes(token: token) }
+      it do
+        expect(context).to be_a_success
+        expect(context).to have_attributes(user: user)
+        expect(context).to have_attributes(user_name: user.username)
+        expect(context).to have_attributes(token: token)
+      end
     end
 
     context 'when unauthorized' do
