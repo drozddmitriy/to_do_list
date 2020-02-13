@@ -3,10 +3,10 @@
 # Group Authentications
 
 
-## Users [/api/v1/authentications]
+## Authentications [/api/v1/authentications]
 
 
-###  [POST /api/v1/authentications]
+### Login user [POST /api/v1/authentications]
 
 
 + Request login user
@@ -19,7 +19,7 @@
 
     + Body
 
-            username=Celsius&password=password
+            username=Kelvin&password=password
 
 + Response 200
 
@@ -30,10 +30,37 @@
     + Body
 
             {
-              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODA5MDk0NDJ9.GKuGz1qDEciT2OT83t7OPHKIOy6R60y3ziSbv_4Mq6s",
-              "exp": "2020-02-05T13:30:42.649Z",
-              "username": "Celsius"
+              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODE2OTQwMDJ9.7pqx1s2GXMziAVIgtM3EbiarJ17bNZYyeW-U2iLH6ss",
+              "exp": "2020-02-14T15:26:42.443Z",
+              "username": "Kelvin"
             }
+
++ Request do not register user
+**POST**&nbsp;&nbsp;`/api/v1/authentications`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            username=Fahrenheit&password=
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid password"
+            }
+
+### Logout user [DELETE /api/v1/authentications]
+
 
 + Request logout user
 **DELETE**&nbsp;&nbsp;`/api/v1/authentications`
@@ -56,7 +83,7 @@
 + Parameters
     + task_id: `1` (number, required)
 
-+ Request is expected to respond with status code :ok (200)
++ Request is expected to eq 3
 **GET**&nbsp;&nbsp;`/api/v1/tasks/1/comments`
 
     + Headers
@@ -74,37 +101,37 @@
             [
               {
                 "id": 1,
-                "text": "Voluptatem velit expedita velit qui.",
+                "text": "Incidunt sunt et vel possimus.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-04T13:30:42.707Z",
-                "updated_at": "2020-02-04T13:30:42.707Z"
+                "created_at": "2020-02-13T15:26:42.491Z",
+                "updated_at": "2020-02-13T15:26:42.491Z"
               },
               {
                 "id": 2,
-                "text": "Sapiente inventore eos nulla quasi.",
+                "text": "Et iure dolor libero omnis odio.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-04T13:30:42.709Z",
-                "updated_at": "2020-02-04T13:30:42.709Z"
+                "created_at": "2020-02-13T15:26:42.493Z",
+                "updated_at": "2020-02-13T15:26:42.493Z"
               },
               {
                 "id": 3,
-                "text": "Ea quibusdam fuga eum deleniti iusto.",
+                "text": "Odit ut quia atque iste perspiciatis.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-04T13:30:42.712Z",
-                "updated_at": "2020-02-04T13:30:42.712Z"
+                "created_at": "2020-02-13T15:26:42.495Z",
+                "updated_at": "2020-02-13T15:26:42.495Z"
               }
             ]
 
-+ Request is expected to eq 3
++ Request is expected to match json schema "comments"
 **GET**&nbsp;&nbsp;`/api/v1/tasks/2/comments`
 
     + Headers
@@ -122,44 +149,44 @@
             [
               {
                 "id": 4,
-                "text": "Qui laudantium sunt ut sint quibusdam.",
+                "text": "Quasi excepturi culpa dolor aut quia maiores.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-04T13:30:42.739Z",
-                "updated_at": "2020-02-04T13:30:42.739Z"
+                "created_at": "2020-02-13T15:26:42.517Z",
+                "updated_at": "2020-02-13T15:26:42.517Z"
               },
               {
                 "id": 5,
-                "text": "Sunt quaerat quisquam repudiandae earum labore nobis et et.",
+                "text": "Aut totam accusantium doloremque et omnis reiciendis.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-04T13:30:42.741Z",
-                "updated_at": "2020-02-04T13:30:42.741Z"
+                "created_at": "2020-02-13T15:26:42.519Z",
+                "updated_at": "2020-02-13T15:26:42.519Z"
               },
               {
                 "id": 6,
-                "text": "Beatae in esse et enim aut sed.",
+                "text": "Commodi id eveniet quae natus nisi sunt dolores saepe.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-04T13:30:42.743Z",
-                "updated_at": "2020-02-04T13:30:42.743Z"
+                "created_at": "2020-02-13T15:26:42.520Z",
+                "updated_at": "2020-02-13T15:26:42.520Z"
               }
             ]
 
-+ Request is expected to match json schema "comments"
-**GET**&nbsp;&nbsp;`/api/v1/tasks/3/comments`
++ Request is expected to respond with a not_found status code (404)
+**GET**&nbsp;&nbsp;`/api/v1/tasks/0/comments`
 
     + Headers
 
             Accept: application/json
 
-+ Response 200
++ Response 404
 
     + Headers
 
@@ -167,38 +194,9 @@
 
     + Body
 
-            [
-              {
-                "id": 7,
-                "text": "Aut culpa sit unde neque delectus sint dolorem numquam.",
-                "file": {
-                  "url": null
-                },
-                "task_id": 3,
-                "created_at": "2020-02-04T13:30:42.765Z",
-                "updated_at": "2020-02-04T13:30:42.765Z"
-              },
-              {
-                "id": 8,
-                "text": "Et enim vel saepe doloremque unde corporis laboriosam quos.",
-                "file": {
-                  "url": null
-                },
-                "task_id": 3,
-                "created_at": "2020-02-04T13:30:42.767Z",
-                "updated_at": "2020-02-04T13:30:42.767Z"
-              },
-              {
-                "id": 9,
-                "text": "Pariatur natus perspiciatis magnam ut eligendi sed.",
-                "file": {
-                  "url": null
-                },
-                "task_id": 3,
-                "created_at": "2020-02-04T13:30:42.769Z",
-                "updated_at": "2020-02-04T13:30:42.769Z"
-              }
-            ]
+            {
+              "error": "Couldn't find Task with 'id'=0"
+            }
 
 ### Create a comment [POST /api/v1/tasks/{task_id}/comments]
 
@@ -215,7 +213,7 @@
 
     + Body
 
-            text=Fugit+quibusdam+rerum+occaecati+facilis+voluptates+qui+voluptas+tenetur.
+            text=Ab+voluptatem+nisi+qui+officia+perferendis+qui+earum+architecto.
 
 + Response 201
 
@@ -227,13 +225,13 @@
 
             {
               "id": 13,
-              "text": "Fugit quibusdam rerum occaecati facilis voluptates qui voluptas tenetur.",
+              "text": "Ab voluptatem nisi qui officia perferendis qui earum architecto.",
               "file": {
                 "url": null
               },
               "task_id": 4,
-              "created_at": "2020-02-04T13:30:42.813Z",
-              "updated_at": "2020-02-04T13:30:42.813Z"
+              "created_at": "2020-02-13T15:26:42.569Z",
+              "updated_at": "2020-02-13T15:26:42.569Z"
             }
 
 + Request is expected to match json schema "comment"
@@ -246,7 +244,7 @@
 
     + Body
 
-            text=Neque+magnam+ducimus+nihil+est.
+            text=Dolorem+autem+veritatis+laborum+et.
 
 + Response 201
 
@@ -258,13 +256,13 @@
 
             {
               "id": 17,
-              "text": "Neque magnam ducimus nihil est.",
+              "text": "Dolorem autem veritatis laborum et.",
               "file": {
                 "url": null
               },
               "task_id": 5,
-              "created_at": "2020-02-04T13:30:42.842Z",
-              "updated_at": "2020-02-04T13:30:42.842Z"
+              "created_at": "2020-02-13T15:26:42.589Z",
+              "updated_at": "2020-02-13T15:26:42.589Z"
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
@@ -334,48 +332,6 @@
 ## Projects [api/v1/projects]
 
 
-### Get projects [GET /api/v1/projects]
-
-
-+ Request get projects
-**GET**&nbsp;&nbsp;`/api/v1/projects`
-
-    + Headers
-
-            Accept: application/json
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json; charset=utf-8
-
-    + Body
-
-            [
-              {
-                "id": 11,
-                "name": "Project 11",
-                "created_at": "2020-02-04T13:30:42.939Z",
-                "updated_at": "2020-02-04T13:30:42.939Z",
-                "user_id": 11
-              },
-              {
-                "id": 10,
-                "name": "Project 10",
-                "created_at": "2020-02-04T13:30:42.938Z",
-                "updated_at": "2020-02-04T13:30:42.938Z",
-                "user_id": 11
-              },
-              {
-                "id": 9,
-                "name": "Project 9",
-                "created_at": "2020-02-04T13:30:42.936Z",
-                "updated_at": "2020-02-04T13:30:42.936Z",
-                "user_id": 11
-              }
-            ]
-
 ### Create a project [POST /api/v1/projects]
 
 
@@ -389,7 +345,7 @@
 
     + Body
 
-            name=Project+15
+            name=Project+12
 
 + Response 201
 
@@ -400,10 +356,10 @@
     + Body
 
             {
-              "id": 15,
-              "name": "Project 15",
-              "created_at": "2020-02-04T13:30:43.003Z",
-              "updated_at": "2020-02-04T13:30:43.003Z",
+              "id": 12,
+              "name": "Project 12",
+              "created_at": "2020-02-13T15:26:42.692Z",
+              "updated_at": "2020-02-13T15:26:42.692Z",
               "user_id": 12
             }
 
@@ -436,10 +392,10 @@
 ### Edit a project [PUT /api/v1/projects/{id}]
 
 + Parameters
-    + id: `22` (number, required)
+    + id: `19` (number, required)
 
-+ Request is expected to match json schema "project"
-**PUT**&nbsp;&nbsp;`/api/v1/projects/22`
++ Request is expected to include "Test_name"
+**PUT**&nbsp;&nbsp;`/api/v1/projects/19`
 
     + Headers
 
@@ -459,15 +415,43 @@
     + Body
 
             {
-              "id": 22,
+              "id": 19,
               "user_id": 14,
               "name": "Test_name",
-              "created_at": "2020-02-04T13:30:43.044Z",
-              "updated_at": "2020-02-04T13:30:43.052Z"
+              "created_at": "2020-02-13T15:26:42.723Z",
+              "updated_at": "2020-02-13T15:26:42.729Z"
+            }
+
++ Request is expected to match json schema "project"
+**PUT**&nbsp;&nbsp;`/api/v1/projects/23`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            name=Test_name
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "id": 23,
+              "user_id": 15,
+              "name": "Test_name",
+              "created_at": "2020-02-13T15:26:42.739Z",
+              "updated_at": "2020-02-13T15:26:42.744Z"
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
-**PUT**&nbsp;&nbsp;`/api/v1/projects/26`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/27`
 
     + Headers
 
@@ -495,10 +479,10 @@
 ### Get a project [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `30` (number, required)
+    + id: `31` (number, required)
 
 + Request is expected to match json schema "project"
-**GET**&nbsp;&nbsp;`/api/v1/projects/30?name=Project 31`
+**GET**&nbsp;&nbsp;`/api/v1/projects/31?name=Project 32`
 
     + Headers
 
@@ -513,11 +497,11 @@
     + Body
 
             {
-              "id": 30,
-              "name": "Project 30",
-              "created_at": "2020-02-04T13:30:43.094Z",
-              "updated_at": "2020-02-04T13:30:43.094Z",
-              "user_id": 16
+              "id": 31,
+              "name": "Project 31",
+              "created_at": "2020-02-13T15:26:42.774Z",
+              "updated_at": "2020-02-13T15:26:42.774Z",
+              "user_id": 17
             }
 
 + Request is expected to respond with a not_found status code (404)
@@ -542,10 +526,10 @@
 ### Delete a project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `34` (number, required)
+    + id: `35` (number, required)
 
 + Request is expected to respond with status code :no_content (204)
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/34`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/35`
 
     + Headers
 
@@ -583,10 +567,10 @@
 ### Get tasks [GET /api/v1/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `40` (number, required)
+    + project_id: `41` (number, required)
 
-+ Request is expected to match json schema "tasks"
-**GET**&nbsp;&nbsp;`/api/v1/projects/40/tasks`
++ Request is expected to eq 3
+**GET**&nbsp;&nbsp;`/api/v1/projects/41/tasks`
 
     + Headers
 
@@ -603,30 +587,78 @@
             [
               {
                 "id": 9,
-                "name": "amet",
-                "project_id": 40,
-                "created_at": "2020-02-04T13:30:43.168Z",
-                "updated_at": "2020-02-04T13:30:43.168Z",
+                "name": "dolore",
+                "project_id": 41,
+                "created_at": "2020-02-13T15:26:42.827Z",
+                "updated_at": "2020-02-13T15:26:42.827Z",
                 "complete": false,
                 "position": 1,
                 "deadline": null
               },
               {
                 "id": 10,
-                "name": "exercitationem",
-                "project_id": 40,
-                "created_at": "2020-02-04T13:30:43.171Z",
-                "updated_at": "2020-02-04T13:30:43.171Z",
+                "name": "omnis",
+                "project_id": 41,
+                "created_at": "2020-02-13T15:26:42.829Z",
+                "updated_at": "2020-02-13T15:26:42.829Z",
                 "complete": false,
                 "position": 2,
                 "deadline": null
               },
               {
                 "id": 11,
-                "name": "autem",
-                "project_id": 40,
-                "created_at": "2020-02-04T13:30:43.174Z",
-                "updated_at": "2020-02-04T13:30:43.174Z",
+                "name": "et",
+                "project_id": 41,
+                "created_at": "2020-02-13T15:26:42.831Z",
+                "updated_at": "2020-02-13T15:26:42.831Z",
+                "complete": false,
+                "position": 3,
+                "deadline": null
+              }
+            ]
+
++ Request is expected to match json schema "tasks"
+**GET**&nbsp;&nbsp;`/api/v1/projects/42/tasks`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            [
+              {
+                "id": 12,
+                "name": "aut",
+                "project_id": 42,
+                "created_at": "2020-02-13T15:26:42.846Z",
+                "updated_at": "2020-02-13T15:26:42.846Z",
+                "complete": false,
+                "position": 1,
+                "deadline": null
+              },
+              {
+                "id": 13,
+                "name": "perferendis",
+                "project_id": 42,
+                "created_at": "2020-02-13T15:26:42.847Z",
+                "updated_at": "2020-02-13T15:26:42.847Z",
+                "complete": false,
+                "position": 2,
+                "deadline": null
+              },
+              {
+                "id": 14,
+                "name": "ullam",
+                "project_id": 42,
+                "created_at": "2020-02-13T15:26:42.849Z",
+                "updated_at": "2020-02-13T15:26:42.849Z",
                 "complete": false,
                 "position": 3,
                 "deadline": null
@@ -636,10 +668,10 @@
 ### Create a task [POST /api/v1/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `41` (number, required)
+    + project_id: `43` (number, required)
 
 + Request is expected to match json schema "task"
-**POST**&nbsp;&nbsp;`/api/v1/projects/41/tasks`
+**POST**&nbsp;&nbsp;`/api/v1/projects/43/tasks`
 
     + Headers
 
@@ -648,7 +680,7 @@
 
     + Body
 
-            name=sed&complete=false
+            name=architecto&complete=false
 
 + Response 201
 
@@ -659,18 +691,18 @@
     + Body
 
             {
-              "id": 15,
-              "name": "sed",
-              "project_id": 41,
-              "created_at": "2020-02-04T13:30:43.219Z",
-              "updated_at": "2020-02-04T13:30:43.219Z",
+              "id": 18,
+              "name": "architecto",
+              "project_id": 43,
+              "created_at": "2020-02-13T15:26:42.879Z",
+              "updated_at": "2020-02-13T15:26:42.879Z",
               "complete": false,
               "position": 4,
               "deadline": null
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
-**POST**&nbsp;&nbsp;`/api/v1/projects/42/tasks`
+**POST**&nbsp;&nbsp;`/api/v1/projects/44/tasks`
 
     + Headers
 
@@ -698,10 +730,10 @@
 ### Edit a task [PUT /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `22` (number, required)
+    + id: `25` (number, required)
 
-+ Request is expected to match json schema "task"
-**PUT**&nbsp;&nbsp;`/api/v1/tasks/22`
++ Request is expected to include "Test_name"
+**PUT**&nbsp;&nbsp;`/api/v1/tasks/25`
 
     + Headers
 
@@ -721,18 +753,49 @@
     + Body
 
             {
-              "id": 22,
-              "project_id": 43,
+              "id": 25,
+              "project_id": 45,
               "name": "Test_name",
               "position": 4,
-              "created_at": "2020-02-04T13:30:43.273Z",
-              "updated_at": "2020-02-04T13:30:43.282Z",
+              "created_at": "2020-02-13T15:26:42.919Z",
+              "updated_at": "2020-02-13T15:26:42.927Z",
+              "complete": false,
+              "deadline": null
+            }
+
++ Request is expected to match json schema "task"
+**PUT**&nbsp;&nbsp;`/api/v1/tasks/29`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            name=Test_name
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "id": 29,
+              "project_id": 46,
+              "name": "Test_name",
+              "position": 4,
+              "created_at": "2020-02-13T15:26:42.943Z",
+              "updated_at": "2020-02-13T15:26:42.952Z",
               "complete": false,
               "deadline": null
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
-**PUT**&nbsp;&nbsp;`/api/v1/tasks/26`
+**PUT**&nbsp;&nbsp;`/api/v1/tasks/33`
 
     + Headers
 
@@ -760,10 +823,10 @@
 ### Get a task [GET /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `30` (number, required)
+    + id: `37` (number, required)
 
 + Request is expected to match json schema "task"
-**GET**&nbsp;&nbsp;`/api/v1/tasks/30?complete=false&name=maxime`
+**GET**&nbsp;&nbsp;`/api/v1/tasks/37?complete=false&name=illo`
 
     + Headers
 
@@ -778,11 +841,11 @@
     + Body
 
             {
-              "id": 30,
-              "name": "similique",
-              "project_id": 45,
-              "created_at": "2020-02-04T13:30:43.337Z",
-              "updated_at": "2020-02-04T13:30:43.337Z",
+              "id": 37,
+              "name": "exercitationem",
+              "project_id": 48,
+              "created_at": "2020-02-13T15:26:43.013Z",
+              "updated_at": "2020-02-13T15:26:43.013Z",
               "complete": false,
               "position": 4,
               "deadline": null
@@ -810,10 +873,10 @@
 ### Delete a task [DELETE /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `34` (number, required)
+    + id: `41` (number, required)
 
 + Request is expected to respond with status code :no_content (204)
-**DELETE**&nbsp;&nbsp;`/api/v1/tasks/34`
+**DELETE**&nbsp;&nbsp;`/api/v1/tasks/41`
 
     + Headers
 
@@ -861,7 +924,7 @@
 
     + Body
 
-            username=Kelvin&password=password&password_confirmation=password
+            username=Fahrenheit&password=password&password_confirmation=password
 
 + Response 201
 
@@ -872,9 +935,9 @@
     + Body
 
             {
-              "id": 29,
-              "username": "Kelvin",
-              "password_digest": "$2a$04$/3b3e1lePle4I3CpxtRZ.eiOwsMDivAVMrAudX0LBbeiWDCK.lalS",
-              "created_at": "2020-02-04T13:30:43.463Z",
-              "updated_at": "2020-02-04T13:30:43.463Z"
+              "id": 32,
+              "username": "Fahrenheit",
+              "password_digest": "$2a$04$k9FrsVD2yhfj1jtywaw00e6cSAkyQw6FEyQPwqnMv0VqmyZpTxUSq",
+              "created_at": "2020-02-13T15:26:43.087Z",
+              "updated_at": "2020-02-13T15:26:43.087Z"
             }

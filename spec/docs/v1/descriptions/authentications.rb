@@ -4,7 +4,7 @@ module Docs
       extend Dox::DSL::Syntax
 
       document :api do
-        resource 'Users' do
+        resource 'Authentications' do
           endpoint '/api/v1/authentications'
           group 'Authentications'
         end

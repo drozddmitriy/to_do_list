@@ -9,9 +9,7 @@ RSpec.describe Authenticate, type: :interactor do
 
       it do
         expect(context).to be_a_success
-        expect(context).to have_attributes(user: user)
-        expect(context).to have_attributes(user_name: user.username)
-        expect(context).to have_attributes(token: token)
+        expect(context).to have_attributes(user: user, user_name: user.username, token: token)
       end
     end
 

@@ -13,7 +13,7 @@ RSpec.describe 'V1::Comments API', type: :request do
     include Docs::V1::Comments::Index
 
     context 'with valid task_id', :dox do
-      before { get api_v1_task_comments_path(task_id: task.id), headers: headers }
+      before { get api_v1_task_comments_path(task_id: task.id), headers: headers } ####json true??????
 
       it { expect(response.parsed_body.size).to eq(3) }
 
@@ -33,8 +33,10 @@ RSpec.describe 'V1::Comments API', type: :request do
     context 'with valid params', :dox do
       before { post api_v1_task_comments_path(task), headers: headers, params: comment_params }
 
-      it { expect(response).to have_http_status(:created) }
-      it { expect(response).to match_json_schema('comment') }
+      it do
+        expect(response).to have_http_status(:created)
+        expect(response).to match_json_schema('comment')
+      end
     end
 
     context 'with invalid params', :dox do

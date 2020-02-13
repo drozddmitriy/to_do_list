@@ -1,4 +1,4 @@
-RSpec.describe 'V1::Users', type: :request do
+RSpec.describe 'V1::Users API', type: :request do
   include Docs::V1::Users::Api
 
   let(:user_params) { attributes_for(:user) }
