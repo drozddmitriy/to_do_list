@@ -14,12 +14,15 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/json
+            Content-Type: application/json
 
     + Body
 
-            username=Kelvin&password=password
+            {
+              "username": "Celsius",
+              "password": "password"
+            }
 
 + Response 200
 
@@ -30,9 +33,9 @@
     + Body
 
             {
-              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODE2OTQwMDJ9.7pqx1s2GXMziAVIgtM3EbiarJ17bNZYyeW-U2iLH6ss",
-              "exp": "2020-02-14T15:26:42.443Z",
-              "username": "Kelvin"
+              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODE3NjE4MTB9.7XJujEe84h_89yx_4HmuCVuoGaDpK1LUa_vL3mgXsxY",
+              "exp": "2020-02-15T10:16:50.833Z",
+              "username": "Celsius"
             }
 
 + Request do not register user
@@ -40,12 +43,15 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/json
+            Content-Type: application/json
 
     + Body
 
-            username=Fahrenheit&password=
+            {
+              "username": "Fahrenheit",
+              "password": ""
+            }
 
 + Response 401
 
@@ -62,7 +68,7 @@
 ### Logout user [DELETE /api/v1/authentications]
 
 
-+ Request logout user
++ Request is expected to respond with status code :no_content (204)
 **DELETE**&nbsp;&nbsp;`/api/v1/authentications`
 
     + Headers
@@ -71,6 +77,26 @@
             Content-Type: application/x-www-form-urlencoded
 
 + Response 204
+
++ Request is expected to respond with status code :unauthorized (401)
+**DELETE**&nbsp;&nbsp;`/api/v1/authentications`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
 
 # Group Comments
 
@@ -101,33 +127,33 @@
             [
               {
                 "id": 1,
-                "text": "Incidunt sunt et vel possimus.",
+                "text": "Dicta maiores voluptatum tenetur provident voluptatem fuga qui autem.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-13T15:26:42.491Z",
-                "updated_at": "2020-02-13T15:26:42.491Z"
+                "created_at": "2020-02-14T10:16:50.886Z",
+                "updated_at": "2020-02-14T10:16:50.886Z"
               },
               {
                 "id": 2,
-                "text": "Et iure dolor libero omnis odio.",
+                "text": "Nulla qui totam beatae quae voluptatem.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-13T15:26:42.493Z",
-                "updated_at": "2020-02-13T15:26:42.493Z"
+                "created_at": "2020-02-14T10:16:50.888Z",
+                "updated_at": "2020-02-14T10:16:50.888Z"
               },
               {
                 "id": 3,
-                "text": "Odit ut quia atque iste perspiciatis.",
+                "text": "Magni consequatur et possimus quas deserunt.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-13T15:26:42.495Z",
-                "updated_at": "2020-02-13T15:26:42.495Z"
+                "created_at": "2020-02-14T10:16:50.890Z",
+                "updated_at": "2020-02-14T10:16:50.890Z"
               }
             ]
 
@@ -149,33 +175,33 @@
             [
               {
                 "id": 4,
-                "text": "Quasi excepturi culpa dolor aut quia maiores.",
+                "text": "Aut quia reprehenderit ea itaque aspernatur perspiciatis.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-13T15:26:42.517Z",
-                "updated_at": "2020-02-13T15:26:42.517Z"
+                "created_at": "2020-02-14T10:16:50.913Z",
+                "updated_at": "2020-02-14T10:16:50.913Z"
               },
               {
                 "id": 5,
-                "text": "Aut totam accusantium doloremque et omnis reiciendis.",
+                "text": "Ut aut facere ipsum dolorem rerum.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-13T15:26:42.519Z",
-                "updated_at": "2020-02-13T15:26:42.519Z"
+                "created_at": "2020-02-14T10:16:50.914Z",
+                "updated_at": "2020-02-14T10:16:50.914Z"
               },
               {
                 "id": 6,
-                "text": "Commodi id eveniet quae natus nisi sunt dolores saepe.",
+                "text": "Qui adipisci doloribus ut odit rerum.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-13T15:26:42.520Z",
-                "updated_at": "2020-02-13T15:26:42.520Z"
+                "created_at": "2020-02-14T10:16:50.916Z",
+                "updated_at": "2020-02-14T10:16:50.916Z"
               }
             ]
 
@@ -198,84 +224,95 @@
               "error": "Couldn't find Task with 'id'=0"
             }
 
++ Request is expected to respond with status code :unauthorized (401)
+**GET**&nbsp;&nbsp;`/api/v1/tasks/4/comments`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**GET**&nbsp;&nbsp;`/api/v1/tasks/5/comments`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
 ### Create a comment [POST /api/v1/tasks/{task_id}/comments]
 
 + Parameters
-    + task_id: `4` (number, required)
-
-+ Request is expected to respond with status code :created (201)
-**POST**&nbsp;&nbsp;`/api/v1/tasks/4/comments`
-
-    + Headers
-
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
-
-    + Body
-
-            text=Ab+voluptatem+nisi+qui+officia+perferendis+qui+earum+architecto.
-
-+ Response 201
-
-    + Headers
-
-            Content-Type: application/json; charset=utf-8
-
-    + Body
-
-            {
-              "id": 13,
-              "text": "Ab voluptatem nisi qui officia perferendis qui earum architecto.",
-              "file": {
-                "url": null
-              },
-              "task_id": 4,
-              "created_at": "2020-02-13T15:26:42.569Z",
-              "updated_at": "2020-02-13T15:26:42.569Z"
-            }
+    + task_id: `6` (number, required)
 
 + Request is expected to match json schema "comment"
-**POST**&nbsp;&nbsp;`/api/v1/tasks/5/comments`
-
-    + Headers
-
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
-
-    + Body
-
-            text=Dolorem+autem+veritatis+laborum+et.
-
-+ Response 201
-
-    + Headers
-
-            Content-Type: application/json; charset=utf-8
-
-    + Body
-
-            {
-              "id": 17,
-              "text": "Dolorem autem veritatis laborum et.",
-              "file": {
-                "url": null
-              },
-              "task_id": 5,
-              "created_at": "2020-02-13T15:26:42.589Z",
-              "updated_at": "2020-02-13T15:26:42.589Z"
-            }
-
-+ Request is expected to respond with status code :unprocessable_entity (422)
 **POST**&nbsp;&nbsp;`/api/v1/tasks/6/comments`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            text
+            {
+              "text": "Aut necessitatibus vero qui eius."
+            }
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "id": 19,
+              "text": "Aut necessitatibus vero qui eius.",
+              "file": {
+                "url": null
+              },
+              "task_id": 6,
+              "created_at": "2020-02-14T10:16:50.998Z",
+              "updated_at": "2020-02-14T10:16:50.998Z"
+            }
+
++ Request is expected to respond with status code :unprocessable_entity (422)
+**POST**&nbsp;&nbsp;`/api/v1/tasks/7/comments`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "text": null
+            }
 
 + Response 422
 
@@ -291,13 +328,65 @@
               ]
             }
 
++ Request is expected to respond with status code :unauthorized (401)
+**POST**&nbsp;&nbsp;`/api/v1/tasks/8/comments`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "text": "Ab labore eius repellat laborum a iure distinctio architecto."
+            }
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**POST**&nbsp;&nbsp;`/api/v1/tasks/9/comments`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "text": "Et laborum est provident rerum non ut laboriosam."
+            }
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
 ### Delete a comment [DELETE /api/v1/comments/{id}]
 
 + Parameters
-    + id: `21` (number, required)
+    + id: `29` (number, required)
 
 + Request is expected to respond with status code :no_content (204)
-**DELETE**&nbsp;&nbsp;`/api/v1/comments/21`
+**DELETE**&nbsp;&nbsp;`/api/v1/comments/29`
 
     + Headers
 
@@ -326,11 +415,171 @@
               "error": "Couldn't find Comment with 'id'=0"
             }
 
++ Request is expected to respond with status code :unauthorized (401)
+**DELETE**&nbsp;&nbsp;`/api/v1/comments/35`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**DELETE**&nbsp;&nbsp;`/api/v1/comments/38`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
 # Group Projects
 
 
 ## Projects [api/v1/projects]
 
+
+### Get projects [GET /api/v1/projects]
+
+
++ Request is expected to eq 3
+**GET**&nbsp;&nbsp;`/api/v1/projects`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            [
+              {
+                "id": 16,
+                "name": "Project 16",
+                "created_at": "2020-02-14T10:16:51.159Z",
+                "updated_at": "2020-02-14T10:16:51.159Z",
+                "user_id": 20
+              },
+              {
+                "id": 15,
+                "name": "Project 15",
+                "created_at": "2020-02-14T10:16:51.158Z",
+                "updated_at": "2020-02-14T10:16:51.158Z",
+                "user_id": 20
+              },
+              {
+                "id": 14,
+                "name": "Project 14",
+                "created_at": "2020-02-14T10:16:51.157Z",
+                "updated_at": "2020-02-14T10:16:51.157Z",
+                "user_id": 20
+              }
+            ]
+
++ Request is expected to match json schema "projects"
+**GET**&nbsp;&nbsp;`/api/v1/projects`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            [
+              {
+                "id": 19,
+                "name": "Project 19",
+                "created_at": "2020-02-14T10:16:51.173Z",
+                "updated_at": "2020-02-14T10:16:51.173Z",
+                "user_id": 21
+              },
+              {
+                "id": 18,
+                "name": "Project 18",
+                "created_at": "2020-02-14T10:16:51.171Z",
+                "updated_at": "2020-02-14T10:16:51.171Z",
+                "user_id": 21
+              },
+              {
+                "id": 17,
+                "name": "Project 17",
+                "created_at": "2020-02-14T10:16:51.170Z",
+                "updated_at": "2020-02-14T10:16:51.170Z",
+                "user_id": 21
+              }
+            ]
+
++ Request is expected to respond with status code :unauthorized (401)
+**GET**&nbsp;&nbsp;`/api/v1/projects`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**PUT**&nbsp;&nbsp;`/api/v1/projects/26`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
 
 ### Create a project [POST /api/v1/projects]
 
@@ -341,11 +590,13 @@
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name=Project+12
+            {
+              "name": "Project 30"
+            }
 
 + Response 201
 
@@ -356,11 +607,11 @@
     + Body
 
             {
-              "id": 12,
-              "name": "Project 12",
-              "created_at": "2020-02-13T15:26:42.692Z",
-              "updated_at": "2020-02-13T15:26:42.692Z",
-              "user_id": 12
+              "id": 30,
+              "name": "Project 30",
+              "created_at": "2020-02-14T10:16:51.221Z",
+              "updated_at": "2020-02-14T10:16:51.221Z",
+              "user_id": 25
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
@@ -369,11 +620,13 @@
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name
+            {
+              "name": null
+            }
 
 + Response 422
 
@@ -387,24 +640,52 @@
               "name": [
                 "can't be blank"
               ]
+            }
+
++ Request is expected to respond with status code :unauthorized (401)
+**POST**&nbsp;&nbsp;`/api/v1/projects`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "Project 37"
+            }
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
             }
 
 ### Edit a project [PUT /api/v1/projects/{id}]
 
 + Parameters
-    + id: `19` (number, required)
+    + id: `40` (number, required)
 
 + Request is expected to include "Test_name"
-**PUT**&nbsp;&nbsp;`/api/v1/projects/19`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/40`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name=Test_name
+            {
+              "name": "Test_name"
+            }
 
 + Response 200
 
@@ -415,24 +696,26 @@
     + Body
 
             {
-              "id": 19,
-              "user_id": 14,
+              "id": 40,
+              "user_id": 28,
               "name": "Test_name",
-              "created_at": "2020-02-13T15:26:42.723Z",
-              "updated_at": "2020-02-13T15:26:42.729Z"
+              "created_at": "2020-02-14T10:16:51.259Z",
+              "updated_at": "2020-02-14T10:16:51.264Z"
             }
 
 + Request is expected to match json schema "project"
-**PUT**&nbsp;&nbsp;`/api/v1/projects/23`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/44`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name=Test_name
+            {
+              "name": "Test_name"
+            }
 
 + Response 200
 
@@ -443,24 +726,26 @@
     + Body
 
             {
-              "id": 23,
-              "user_id": 15,
+              "id": 44,
+              "user_id": 29,
               "name": "Test_name",
-              "created_at": "2020-02-13T15:26:42.739Z",
-              "updated_at": "2020-02-13T15:26:42.744Z"
+              "created_at": "2020-02-14T10:16:51.274Z",
+              "updated_at": "2020-02-14T10:16:51.278Z"
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
-**PUT**&nbsp;&nbsp;`/api/v1/projects/27`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/48`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name
+            {
+              "name": null
+            }
 
 + Response 422
 
@@ -476,13 +761,63 @@
               ]
             }
 
++ Request is expected to respond with status code :unauthorized (401)
+**PUT**&nbsp;&nbsp;`/api/v1/projects/52`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            name=Project+54
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**PUT**&nbsp;&nbsp;`/api/v1/projects/56`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "Project 59"
+            }
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
 ### Get a project [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `31` (number, required)
+    + id: `60` (number, required)
 
 + Request is expected to match json schema "project"
-**GET**&nbsp;&nbsp;`/api/v1/projects/31?name=Project 32`
+**GET**&nbsp;&nbsp;`/api/v1/projects/60`
 
     + Headers
 
@@ -497,11 +832,11 @@
     + Body
 
             {
-              "id": 31,
-              "name": "Project 31",
-              "created_at": "2020-02-13T15:26:42.774Z",
-              "updated_at": "2020-02-13T15:26:42.774Z",
-              "user_id": 17
+              "id": 60,
+              "name": "Project 63",
+              "created_at": "2020-02-14T10:16:51.332Z",
+              "updated_at": "2020-02-14T10:16:51.332Z",
+              "user_id": 34
             }
 
 + Request is expected to respond with a not_found status code (404)
@@ -523,13 +858,51 @@
               "error": "Couldn't find Project with 'id'=0"
             }
 
++ Request is expected to respond with status code :unauthorized (401)
+**GET**&nbsp;&nbsp;`/api/v1/projects/67`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**GET**&nbsp;&nbsp;`/api/v1/projects/71`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
 ### Delete a project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `35` (number, required)
+    + id: `72` (number, required)
 
 + Request is expected to respond with status code :no_content (204)
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/35`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/72`
 
     + Headers
 
@@ -539,7 +912,7 @@
 + Response 204
 
 + Request is expected to respond with a not_found status code (404)
-**DELETE**&nbsp;&nbsp;`/api/v1/comments/0`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/0`
 
     + Headers
 
@@ -555,7 +928,47 @@
     + Body
 
             {
-              "error": "Couldn't find Comment with 'id'=0"
+              "error": "Couldn't find Project with 'id'=0"
+            }
+
++ Request is expected to respond with status code :unauthorized (401)
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/78`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/81`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
             }
 
 # Group Tasks
@@ -567,10 +980,10 @@
 ### Get tasks [GET /api/v1/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `41` (number, required)
+    + project_id: `84` (number, required)
 
 + Request is expected to eq 3
-**GET**&nbsp;&nbsp;`/api/v1/projects/41/tasks`
+**GET**&nbsp;&nbsp;`/api/v1/projects/84/tasks`
 
     + Headers
 
@@ -586,31 +999,31 @@
 
             [
               {
-                "id": 9,
-                "name": "dolore",
-                "project_id": 41,
-                "created_at": "2020-02-13T15:26:42.827Z",
-                "updated_at": "2020-02-13T15:26:42.827Z",
+                "id": 14,
+                "name": "magni",
+                "project_id": 84,
+                "created_at": "2020-02-14T10:16:51.453Z",
+                "updated_at": "2020-02-14T10:16:51.453Z",
                 "complete": false,
                 "position": 1,
                 "deadline": null
               },
               {
-                "id": 10,
-                "name": "omnis",
-                "project_id": 41,
-                "created_at": "2020-02-13T15:26:42.829Z",
-                "updated_at": "2020-02-13T15:26:42.829Z",
+                "id": 15,
+                "name": "dignissimos",
+                "project_id": 84,
+                "created_at": "2020-02-14T10:16:51.455Z",
+                "updated_at": "2020-02-14T10:16:51.455Z",
                 "complete": false,
                 "position": 2,
                 "deadline": null
               },
               {
-                "id": 11,
-                "name": "et",
-                "project_id": 41,
-                "created_at": "2020-02-13T15:26:42.831Z",
-                "updated_at": "2020-02-13T15:26:42.831Z",
+                "id": 16,
+                "name": "voluptas",
+                "project_id": 84,
+                "created_at": "2020-02-14T10:16:51.458Z",
+                "updated_at": "2020-02-14T10:16:51.458Z",
                 "complete": false,
                 "position": 3,
                 "deadline": null
@@ -618,7 +1031,7 @@
             ]
 
 + Request is expected to match json schema "tasks"
-**GET**&nbsp;&nbsp;`/api/v1/projects/42/tasks`
+**GET**&nbsp;&nbsp;`/api/v1/projects/85/tasks`
 
     + Headers
 
@@ -634,53 +1047,94 @@
 
             [
               {
-                "id": 12,
-                "name": "aut",
-                "project_id": 42,
-                "created_at": "2020-02-13T15:26:42.846Z",
-                "updated_at": "2020-02-13T15:26:42.846Z",
+                "id": 17,
+                "name": "et",
+                "project_id": 85,
+                "created_at": "2020-02-14T10:16:51.472Z",
+                "updated_at": "2020-02-14T10:16:51.472Z",
                 "complete": false,
                 "position": 1,
                 "deadline": null
               },
               {
-                "id": 13,
-                "name": "perferendis",
-                "project_id": 42,
-                "created_at": "2020-02-13T15:26:42.847Z",
-                "updated_at": "2020-02-13T15:26:42.847Z",
+                "id": 18,
+                "name": "beatae",
+                "project_id": 85,
+                "created_at": "2020-02-14T10:16:51.474Z",
+                "updated_at": "2020-02-14T10:16:51.474Z",
                 "complete": false,
                 "position": 2,
                 "deadline": null
               },
               {
-                "id": 14,
-                "name": "ullam",
-                "project_id": 42,
-                "created_at": "2020-02-13T15:26:42.849Z",
-                "updated_at": "2020-02-13T15:26:42.849Z",
+                "id": 19,
+                "name": "placeat",
+                "project_id": 85,
+                "created_at": "2020-02-14T10:16:51.477Z",
+                "updated_at": "2020-02-14T10:16:51.477Z",
                 "complete": false,
                 "position": 3,
                 "deadline": null
               }
             ]
 
-### Create a task [POST /api/v1/projects/{project_id}/tasks]
-
-+ Parameters
-    + project_id: `43` (number, required)
-
-+ Request is expected to match json schema "task"
-**POST**&nbsp;&nbsp;`/api/v1/projects/43/tasks`
++ Request is expected to respond with status code :unauthorized (401)
+**GET**&nbsp;&nbsp;`/api/v1/projects/86/tasks`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
 
     + Body
 
-            name=architecto&complete=false
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**GET**&nbsp;&nbsp;`/api/v1/projects/87/tasks`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
+### Create a task [POST /api/v1/projects/{project_id}/tasks]
+
++ Parameters
+    + project_id: `88` (number, required)
+
++ Request is expected to match json schema "task"
+**POST**&nbsp;&nbsp;`/api/v1/projects/88/tasks`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "repellat",
+              "complete": false
+            }
 
 + Response 201
 
@@ -691,27 +1145,29 @@
     + Body
 
             {
-              "id": 18,
-              "name": "architecto",
-              "project_id": 43,
-              "created_at": "2020-02-13T15:26:42.879Z",
-              "updated_at": "2020-02-13T15:26:42.879Z",
+              "id": 29,
+              "name": "repellat",
+              "project_id": 88,
+              "created_at": "2020-02-14T10:16:51.583Z",
+              "updated_at": "2020-02-14T10:16:51.583Z",
               "complete": false,
               "position": 4,
               "deadline": null
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
-**POST**&nbsp;&nbsp;`/api/v1/projects/44/tasks`
+**POST**&nbsp;&nbsp;`/api/v1/projects/89/tasks`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name
+            {
+              "name": null
+            }
 
 + Response 422
 
@@ -725,24 +1181,80 @@
               "name": [
                 "can't be blank"
               ]
+            }
+
++ Request is expected to respond with status code :unauthorized (401)
+**POST**&nbsp;&nbsp;`/api/v1/projects/90/tasks`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "provident",
+              "complete": false
+            }
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**POST**&nbsp;&nbsp;`/api/v1/projects/91/tasks`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "et",
+              "complete": false
+            }
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
             }
 
 ### Edit a task [PUT /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `25` (number, required)
+    + id: `42` (number, required)
 
 + Request is expected to include "Test_name"
-**PUT**&nbsp;&nbsp;`/api/v1/tasks/25`
+**PUT**&nbsp;&nbsp;`/api/v1/tasks/42`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name=Test_name
+            {
+              "name": "Test_name"
+            }
 
 + Response 200
 
@@ -753,27 +1265,29 @@
     + Body
 
             {
-              "id": 25,
-              "project_id": 45,
+              "id": 42,
+              "project_id": 92,
               "name": "Test_name",
               "position": 4,
-              "created_at": "2020-02-13T15:26:42.919Z",
-              "updated_at": "2020-02-13T15:26:42.927Z",
+              "created_at": "2020-02-14T10:16:51.663Z",
+              "updated_at": "2020-02-14T10:16:51.670Z",
               "complete": false,
               "deadline": null
             }
 
 + Request is expected to match json schema "task"
-**PUT**&nbsp;&nbsp;`/api/v1/tasks/29`
+**PUT**&nbsp;&nbsp;`/api/v1/tasks/46`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name=Test_name
+            {
+              "name": "Test_name"
+            }
 
 + Response 200
 
@@ -784,27 +1298,29 @@
     + Body
 
             {
-              "id": 29,
-              "project_id": 46,
+              "id": 46,
+              "project_id": 93,
               "name": "Test_name",
               "position": 4,
-              "created_at": "2020-02-13T15:26:42.943Z",
-              "updated_at": "2020-02-13T15:26:42.952Z",
+              "created_at": "2020-02-14T10:16:51.684Z",
+              "updated_at": "2020-02-14T10:16:51.691Z",
               "complete": false,
               "deadline": null
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
-**PUT**&nbsp;&nbsp;`/api/v1/tasks/33`
+**PUT**&nbsp;&nbsp;`/api/v1/tasks/50`
 
     + Headers
 
             Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
     + Body
 
-            name
+            {
+              "name": null
+            }
 
 + Response 422
 
@@ -820,13 +1336,66 @@
               ]
             }
 
++ Request is expected to respond with status code :unauthorized (401)
+**PUT**&nbsp;&nbsp;`/api/v1/tasks/54`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "commodi",
+              "complete": false
+            }
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**PUT**&nbsp;&nbsp;`/api/v1/tasks/58`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "Test_name"
+            }
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
 ### Get a task [GET /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `37` (number, required)
+    + id: `62` (number, required)
 
 + Request is expected to match json schema "task"
-**GET**&nbsp;&nbsp;`/api/v1/tasks/37?complete=false&name=illo`
+**GET**&nbsp;&nbsp;`/api/v1/tasks/62`
 
     + Headers
 
@@ -841,11 +1410,11 @@
     + Body
 
             {
-              "id": 37,
-              "name": "exercitationem",
-              "project_id": 48,
-              "created_at": "2020-02-13T15:26:43.013Z",
-              "updated_at": "2020-02-13T15:26:43.013Z",
+              "id": 62,
+              "name": "omnis",
+              "project_id": 97,
+              "created_at": "2020-02-14T10:16:51.768Z",
+              "updated_at": "2020-02-14T10:16:51.768Z",
               "complete": false,
               "position": 4,
               "deadline": null
@@ -870,13 +1439,51 @@
               "error": "Couldn't find Task with 'id'=0"
             }
 
++ Request is expected to respond with status code :unauthorized (401)
+**GET**&nbsp;&nbsp;`/api/v1/tasks/69`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**GET**&nbsp;&nbsp;`/api/v1/tasks/73`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
 ### Delete a task [DELETE /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `41` (number, required)
+    + id: `74` (number, required)
 
 + Request is expected to respond with status code :no_content (204)
-**DELETE**&nbsp;&nbsp;`/api/v1/tasks/41`
+**DELETE**&nbsp;&nbsp;`/api/v1/tasks/74`
 
     + Headers
 
@@ -905,6 +1512,46 @@
               "error": "Couldn't find Task with 'id'=0"
             }
 
++ Request is expected to respond with status code :unauthorized (401)
+**DELETE**&nbsp;&nbsp;`/api/v1/tasks/80`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Invalid token"
+            }
+
++ Request is expected to respond with status code :forbidden (403)
+**DELETE**&nbsp;&nbsp;`/api/v1/tasks/83`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 403
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "error": "Access denied"
+            }
+
 # Group Users
 
 
@@ -919,12 +1566,16 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/json
+            Content-Type: application/json
 
     + Body
 
-            username=Fahrenheit&password=password&password_confirmation=password
+            {
+              "username": "Celsius",
+              "password": "password",
+              "password_confirmation": "password"
+            }
 
 + Response 201
 
@@ -935,9 +1586,9 @@
     + Body
 
             {
-              "id": 32,
-              "username": "Fahrenheit",
-              "password_digest": "$2a$04$k9FrsVD2yhfj1jtywaw00e6cSAkyQw6FEyQPwqnMv0VqmyZpTxUSq",
-              "created_at": "2020-02-13T15:26:43.087Z",
-              "updated_at": "2020-02-13T15:26:43.087Z"
+              "id": 70,
+              "username": "Celsius",
+              "password_digest": "$2a$04$l0WNtm6BzwEtBmdgeGzt.e9sSU8NqOaORNFnwmdizrfqCqHvVrWi6",
+              "created_at": "2020-02-14T10:16:51.933Z",
+              "updated_at": "2020-02-14T10:16:51.933Z"
             }

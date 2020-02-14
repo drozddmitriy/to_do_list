@@ -8,7 +8,7 @@ RSpec.describe 'V1::Users API', type: :request do
     let(:invalid_user) { { username: '', password: '', password_confirmation: '' } }
 
     it 'register new user', :dox do
-      post api_v1_users_path, params: user_params
+      post api_v1_users_path, params: user_params, as: :json
       expect(response).to have_http_status(:created)
     end
 

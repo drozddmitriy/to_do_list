@@ -22,6 +22,23 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
       it_behaves_like 'http status not_found'
     end
+
+    context 'when user unauthorized', :dox do
+      let(:headers) { { authorization: nil, accept: 'application/json' } }
+
+      before { get api_v1_project_tasks_path(project), headers: headers }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when action is forbidden', :dox do
+      let(:user_forbidden) { create(:user, username: 'test12') }
+      let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
+
+      before { get api_v1_project_tasks_path(project), headers: headers }
+
+      it { expect(response).to have_http_status(:forbidden) }
+    end
   end
 
   describe 'POST /api/v1/projects/:project_id/tasks' do
@@ -32,7 +49,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
       it do
         expect do
-          post api_v1_project_tasks_path(project), headers: headers, params: task_params
+          post api_v1_project_tasks_path(project), headers: headers, params: task_params, as: :json
         end.to change(Task, :count).by(1)
 
         expect(response).to have_http_status(:created)
@@ -43,9 +60,28 @@ RSpec.describe 'V1::Tasks API', type: :request do
     context 'with invalid params', :dox do
       let(:task_params) { { name: nil } }
 
-      before { post api_v1_project_tasks_path(project), headers: headers, params: task_params }
+      before { post api_v1_project_tasks_path(project), headers: headers, params: task_params, as: :json }
 
       it { expect(response).to have_http_status(:unprocessable_entity) }
+    end
+
+    context 'when user unauthorized', :dox do
+      let(:task_params) { attributes_for(:task) }
+      let(:headers) { { authorization: nil, accept: 'application/json' } }
+
+      before { post api_v1_project_tasks_path(project), headers: headers, params: task_params, as: :json }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when action is forbidden', :dox do
+      let(:task_params) { attributes_for(:task) }
+      let(:user_forbidden) { create(:user, username: 'test1') }
+      let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
+
+      before { post api_v1_project_tasks_path(project), headers: headers, params: task_params, as: :json }
+
+      it { expect(response).to have_http_status(:forbidden) }
     end
   end
 
@@ -56,7 +92,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
     context 'with valid params', :dox do
       let(:edite_task) { { name: 'Test_name' } }
 
-      before { put api_v1_task_path(task), headers: headers, params: edite_task }
+      before { put api_v1_task_path(task), headers: headers, params: edite_task, as: :json }
 
       it { expect(response.body).to include(edite_task[:name]) }
 
@@ -66,9 +102,28 @@ RSpec.describe 'V1::Tasks API', type: :request do
     context 'with invalid params', :dox do
       let(:task_params) { { name: nil } }
 
-      before { put api_v1_task_path(task), headers: headers, params: task_params }
+      before { put api_v1_task_path(task), headers: headers, params: task_params, as: :json }
 
       it { expect(response).to have_http_status(:unprocessable_entity) }
+    end
+
+    context 'when user unauthorized', :dox do
+      let(:task_params) { attributes_for(:task) }
+      let(:headers) { { authorization: nil, accept: 'application/json' } }
+
+      before { put api_v1_task_path(task), headers: headers, params: task_params, as: :json }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when action is forbidden', :dox do
+      let(:edite_task) { { name: 'Test_name' } }
+      let(:user_forbidden) { create(:user, username: 'test23') }
+      let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
+
+      before { put api_v1_task_path(task), headers: headers, params: edite_task, as: :json }
+
+      it { expect(response).to have_http_status(:forbidden) }
     end
   end
 
@@ -77,9 +132,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
     let(:task) { create(:task, project: project) }
 
     context 'with valid id', :dox do
-      let(:task_params) { attributes_for(:task) }
-
-      before { get api_v1_task_path(task), headers: headers, params: task_params }
+      before { get api_v1_task_path(task), headers: headers }
 
       it_behaves_like 'http status ok', 'task'
     end
@@ -88,6 +141,23 @@ RSpec.describe 'V1::Tasks API', type: :request do
       before { get api_v1_task_path(id: 0), headers: headers }
 
       it_behaves_like 'http status not_found'
+    end
+
+    context 'when user unauthorized', :dox do
+      let(:headers) { { authorization: nil, accept: 'application/json' } }
+
+      before { get api_v1_task_path(task), headers: headers }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when action is forbidden', :dox do
+      let(:user_forbidden) { create(:user, username: 'test3') }
+      let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
+
+      before { get api_v1_task_path(task), headers: headers }
+
+      it { expect(response).to have_http_status(:forbidden) }
     end
   end
 
@@ -108,6 +178,23 @@ RSpec.describe 'V1::Tasks API', type: :request do
       before { delete api_v1_task_path(id: 0), headers: headers }
 
       it_behaves_like 'http status not_found'
+    end
+
+    context 'when user unauthorized', :dox do
+      let(:headers) { { authorization: nil, accept: 'application/json' } }
+
+      before { delete api_v1_task_path(id: tasks.first.id), headers: headers }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when action is forbidden', :dox do
+      let(:user_forbidden) { create(:user, username: 'test4') }
+      let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
+
+      before { delete api_v1_task_path(id: tasks.first.id), headers: headers }
+
+      it { expect(response).to have_http_status(:forbidden) }
     end
   end
 end

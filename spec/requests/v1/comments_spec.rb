@@ -13,7 +13,7 @@ RSpec.describe 'V1::Comments API', type: :request do
     include Docs::V1::Comments::Index
 
     context 'with valid task_id', :dox do
-      before { get api_v1_task_comments_path(task_id: task.id), headers: headers } ####json true??????
+      before { get api_v1_task_comments_path(task), headers: headers }
 
       it { expect(response.parsed_body.size).to eq(3) }
 
@@ -21,9 +21,26 @@ RSpec.describe 'V1::Comments API', type: :request do
     end
 
     context 'with invalid task_id', :dox do
-      before { get api_v1_task_comments_path(task_id: 0), headers: headers }
+      before { get api_v1_task_comments_path(0), headers: headers }
 
       it_behaves_like 'http status not_found'
+    end
+
+    context 'when user unauthorized', :dox do
+      let(:headers) { { authorization: nil, accept: 'application/json' } }
+
+      before { get api_v1_task_comments_path(task), headers: headers }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when action is forbidden', :dox do
+      let(:user_forbidden) { create(:user, username: 'test1') }
+      let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
+
+      before { get api_v1_task_comments_path(task), headers: headers }
+
+      it { expect(response).to have_http_status(:forbidden) }
     end
   end
 
@@ -31,7 +48,7 @@ RSpec.describe 'V1::Comments API', type: :request do
     include Docs::V1::Comments::Create
 
     context 'with valid params', :dox do
-      before { post api_v1_task_comments_path(task), headers: headers, params: comment_params }
+      before { post api_v1_task_comments_path(task), headers: headers, params: comment_params, as: :json }
 
       it do
         expect(response).to have_http_status(:created)
@@ -42,9 +59,26 @@ RSpec.describe 'V1::Comments API', type: :request do
     context 'with invalid params', :dox do
       let(:params) { { text: nil } }
 
-      before { post api_v1_task_comments_path(task), headers: headers, params: params }
+      before { post api_v1_task_comments_path(task), headers: headers, params: params, as: :json }
 
       it { expect(response).to have_http_status(:unprocessable_entity) }
+    end
+
+    context 'when user unauthorized', :dox do
+      let(:headers) { { authorization: nil, accept: 'application/json' } }
+
+      before { post api_v1_task_comments_path(task), headers: headers, params: comment_params, as: :json }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when action is forbidden', :dox do
+      let(:user_forbidden) { create(:user, username: 'test2') }
+      let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
+
+      before { post api_v1_task_comments_path(task), headers: headers, params: comment_params, as: :json }
+
+      it { expect(response).to have_http_status(:forbidden) }
     end
   end
 
@@ -61,6 +95,23 @@ RSpec.describe 'V1::Comments API', type: :request do
       before { delete api_v1_comment_path(id: 0), headers: headers }
 
       it_behaves_like 'http status not_found'
+    end
+
+    context 'when user unauthorized', :dox do
+      let(:headers) { { authorization: nil, accept: 'application/json' } }
+
+      before { delete api_v1_comment_path(id: comments.first.id), headers: headers }
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'when action is forbidden', :dox do
+      let(:user_forbidden) { create(:user, username: 'test4') }
+      let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
+
+      before { delete api_v1_comment_path(id: comments.first.id), headers: headers }
+
+      it { expect(response).to have_http_status(:forbidden) }
     end
   end
 end
