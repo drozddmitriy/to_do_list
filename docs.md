@@ -20,7 +20,7 @@
     + Body
 
             {
-              "username": "Celsius",
+              "username": "Fahrenheit",
               "password": "password"
             }
 
@@ -33,9 +33,9 @@
     + Body
 
             {
-              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODE3NjE4MTB9.7XJujEe84h_89yx_4HmuCVuoGaDpK1LUa_vL3mgXsxY",
-              "exp": "2020-02-15T10:16:50.833Z",
-              "username": "Celsius"
+              "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODE3NjIzOTJ9.mV1telE3IF4dWVQHT3Bj34FLp6nyYHr-O9OKICi76HU",
+              "exp": "2020-02-15T10:26:32.748Z",
+              "username": "Fahrenheit"
             }
 
 + Request do not register user
@@ -49,7 +49,7 @@
     + Body
 
             {
-              "username": "Fahrenheit",
+              "username": "Kelvin",
               "password": ""
             }
 
@@ -127,33 +127,33 @@
             [
               {
                 "id": 1,
-                "text": "Dicta maiores voluptatum tenetur provident voluptatem fuga qui autem.",
+                "text": "Perferendis atque rerum vel sequi.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-14T10:16:50.886Z",
-                "updated_at": "2020-02-14T10:16:50.886Z"
+                "created_at": "2020-02-14T10:26:32.801Z",
+                "updated_at": "2020-02-14T10:26:32.801Z"
               },
               {
                 "id": 2,
-                "text": "Nulla qui totam beatae quae voluptatem.",
+                "text": "Tenetur fugiat dolorum itaque illo unde.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-14T10:16:50.888Z",
-                "updated_at": "2020-02-14T10:16:50.888Z"
+                "created_at": "2020-02-14T10:26:32.803Z",
+                "updated_at": "2020-02-14T10:26:32.803Z"
               },
               {
                 "id": 3,
-                "text": "Magni consequatur et possimus quas deserunt.",
+                "text": "Explicabo vero laudantium tempora voluptas reiciendis quis voluptate.",
                 "file": {
                   "url": null
                 },
                 "task_id": 1,
-                "created_at": "2020-02-14T10:16:50.890Z",
-                "updated_at": "2020-02-14T10:16:50.890Z"
+                "created_at": "2020-02-14T10:26:32.804Z",
+                "updated_at": "2020-02-14T10:26:32.804Z"
               }
             ]
 
@@ -175,33 +175,33 @@
             [
               {
                 "id": 4,
-                "text": "Aut quia reprehenderit ea itaque aspernatur perspiciatis.",
+                "text": "Ut est velit quisquam ad qui ea.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-14T10:16:50.913Z",
-                "updated_at": "2020-02-14T10:16:50.913Z"
+                "created_at": "2020-02-14T10:26:32.828Z",
+                "updated_at": "2020-02-14T10:26:32.828Z"
               },
               {
                 "id": 5,
-                "text": "Ut aut facere ipsum dolorem rerum.",
+                "text": "Aliquid molestiae cum natus consequuntur dolores quis itaque.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-14T10:16:50.914Z",
-                "updated_at": "2020-02-14T10:16:50.914Z"
+                "created_at": "2020-02-14T10:26:32.830Z",
+                "updated_at": "2020-02-14T10:26:32.830Z"
               },
               {
                 "id": 6,
-                "text": "Qui adipisci doloribus ut odit rerum.",
+                "text": "Eum fugiat rerum molestiae necessitatibus consequatur libero consequuntur optio.",
                 "file": {
                   "url": null
                 },
                 "task_id": 2,
-                "created_at": "2020-02-14T10:16:50.916Z",
-                "updated_at": "2020-02-14T10:16:50.916Z"
+                "created_at": "2020-02-14T10:26:32.831Z",
+                "updated_at": "2020-02-14T10:26:32.831Z"
               }
             ]
 
@@ -278,7 +278,7 @@
     + Body
 
             {
-              "text": "Aut necessitatibus vero qui eius."
+              "text": "Corporis est provident et non voluptatum sint."
             }
 
 + Response 201
@@ -291,13 +291,13 @@
 
             {
               "id": 19,
-              "text": "Aut necessitatibus vero qui eius.",
+              "text": "Corporis est provident et non voluptatum sint.",
               "file": {
                 "url": null
               },
               "task_id": 6,
-              "created_at": "2020-02-14T10:16:50.998Z",
-              "updated_at": "2020-02-14T10:16:50.998Z"
+              "created_at": "2020-02-14T10:26:32.910Z",
+              "updated_at": "2020-02-14T10:26:32.910Z"
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
@@ -339,7 +339,7 @@
     + Body
 
             {
-              "text": "Ab labore eius repellat laborum a iure distinctio architecto."
+              "text": "Eius illo perspiciatis voluptatem odio tempore similique assumenda."
             }
 
 + Response 401
@@ -365,7 +365,7 @@
     + Body
 
             {
-              "text": "Et laborum est provident rerum non ut laboriosam."
+              "text": "Cumque ut necessitatibus et consequatur repellendus distinctio."
             }
 
 + Response 403
@@ -483,22 +483,22 @@
               {
                 "id": 16,
                 "name": "Project 16",
-                "created_at": "2020-02-14T10:16:51.159Z",
-                "updated_at": "2020-02-14T10:16:51.159Z",
+                "created_at": "2020-02-14T10:26:33.065Z",
+                "updated_at": "2020-02-14T10:26:33.065Z",
                 "user_id": 20
               },
               {
                 "id": 15,
                 "name": "Project 15",
-                "created_at": "2020-02-14T10:16:51.158Z",
-                "updated_at": "2020-02-14T10:16:51.158Z",
+                "created_at": "2020-02-14T10:26:33.064Z",
+                "updated_at": "2020-02-14T10:26:33.064Z",
                 "user_id": 20
               },
               {
                 "id": 14,
                 "name": "Project 14",
-                "created_at": "2020-02-14T10:16:51.157Z",
-                "updated_at": "2020-02-14T10:16:51.157Z",
+                "created_at": "2020-02-14T10:26:33.063Z",
+                "updated_at": "2020-02-14T10:26:33.063Z",
                 "user_id": 20
               }
             ]
@@ -522,22 +522,22 @@
               {
                 "id": 19,
                 "name": "Project 19",
-                "created_at": "2020-02-14T10:16:51.173Z",
-                "updated_at": "2020-02-14T10:16:51.173Z",
+                "created_at": "2020-02-14T10:26:33.079Z",
+                "updated_at": "2020-02-14T10:26:33.079Z",
                 "user_id": 21
               },
               {
                 "id": 18,
                 "name": "Project 18",
-                "created_at": "2020-02-14T10:16:51.171Z",
-                "updated_at": "2020-02-14T10:16:51.171Z",
+                "created_at": "2020-02-14T10:26:33.077Z",
+                "updated_at": "2020-02-14T10:26:33.077Z",
                 "user_id": 21
               },
               {
                 "id": 17,
                 "name": "Project 17",
-                "created_at": "2020-02-14T10:16:51.170Z",
-                "updated_at": "2020-02-14T10:16:51.170Z",
+                "created_at": "2020-02-14T10:26:33.076Z",
+                "updated_at": "2020-02-14T10:26:33.076Z",
                 "user_id": 21
               }
             ]
@@ -609,8 +609,8 @@
             {
               "id": 30,
               "name": "Project 30",
-              "created_at": "2020-02-14T10:16:51.221Z",
-              "updated_at": "2020-02-14T10:16:51.221Z",
+              "created_at": "2020-02-14T10:26:33.124Z",
+              "updated_at": "2020-02-14T10:26:33.124Z",
               "user_id": 25
             }
 
@@ -699,8 +699,8 @@
               "id": 40,
               "user_id": 28,
               "name": "Test_name",
-              "created_at": "2020-02-14T10:16:51.259Z",
-              "updated_at": "2020-02-14T10:16:51.264Z"
+              "created_at": "2020-02-14T10:26:33.160Z",
+              "updated_at": "2020-02-14T10:26:33.165Z"
             }
 
 + Request is expected to match json schema "project"
@@ -729,8 +729,8 @@
               "id": 44,
               "user_id": 29,
               "name": "Test_name",
-              "created_at": "2020-02-14T10:16:51.274Z",
-              "updated_at": "2020-02-14T10:16:51.278Z"
+              "created_at": "2020-02-14T10:26:33.175Z",
+              "updated_at": "2020-02-14T10:26:33.180Z"
             }
 
 + Request is expected to respond with status code :unprocessable_entity (422)
@@ -834,8 +834,8 @@
             {
               "id": 60,
               "name": "Project 63",
-              "created_at": "2020-02-14T10:16:51.332Z",
-              "updated_at": "2020-02-14T10:16:51.332Z",
+              "created_at": "2020-02-14T10:26:33.233Z",
+              "updated_at": "2020-02-14T10:26:33.233Z",
               "user_id": 34
             }
 
@@ -1000,30 +1000,30 @@
             [
               {
                 "id": 14,
-                "name": "magni",
+                "name": "impedit",
                 "project_id": 84,
-                "created_at": "2020-02-14T10:16:51.453Z",
-                "updated_at": "2020-02-14T10:16:51.453Z",
+                "created_at": "2020-02-14T10:26:33.351Z",
+                "updated_at": "2020-02-14T10:26:33.351Z",
                 "complete": false,
                 "position": 1,
                 "deadline": null
               },
               {
                 "id": 15,
-                "name": "dignissimos",
+                "name": "non",
                 "project_id": 84,
-                "created_at": "2020-02-14T10:16:51.455Z",
-                "updated_at": "2020-02-14T10:16:51.455Z",
+                "created_at": "2020-02-14T10:26:33.353Z",
+                "updated_at": "2020-02-14T10:26:33.353Z",
                 "complete": false,
                 "position": 2,
                 "deadline": null
               },
               {
                 "id": 16,
-                "name": "voluptas",
+                "name": "dolorum",
                 "project_id": 84,
-                "created_at": "2020-02-14T10:16:51.458Z",
-                "updated_at": "2020-02-14T10:16:51.458Z",
+                "created_at": "2020-02-14T10:26:33.356Z",
+                "updated_at": "2020-02-14T10:26:33.356Z",
                 "complete": false,
                 "position": 3,
                 "deadline": null
@@ -1048,30 +1048,30 @@
             [
               {
                 "id": 17,
-                "name": "et",
+                "name": "voluptates",
                 "project_id": 85,
-                "created_at": "2020-02-14T10:16:51.472Z",
-                "updated_at": "2020-02-14T10:16:51.472Z",
+                "created_at": "2020-02-14T10:26:33.370Z",
+                "updated_at": "2020-02-14T10:26:33.370Z",
                 "complete": false,
                 "position": 1,
                 "deadline": null
               },
               {
                 "id": 18,
-                "name": "beatae",
+                "name": "perferendis",
                 "project_id": 85,
-                "created_at": "2020-02-14T10:16:51.474Z",
-                "updated_at": "2020-02-14T10:16:51.474Z",
+                "created_at": "2020-02-14T10:26:33.373Z",
+                "updated_at": "2020-02-14T10:26:33.373Z",
                 "complete": false,
                 "position": 2,
                 "deadline": null
               },
               {
                 "id": 19,
-                "name": "placeat",
+                "name": "aut",
                 "project_id": 85,
-                "created_at": "2020-02-14T10:16:51.477Z",
-                "updated_at": "2020-02-14T10:16:51.477Z",
+                "created_at": "2020-02-14T10:26:33.375Z",
+                "updated_at": "2020-02-14T10:26:33.375Z",
                 "complete": false,
                 "position": 3,
                 "deadline": null
@@ -1132,7 +1132,7 @@
     + Body
 
             {
-              "name": "repellat",
+              "name": "doloribus",
               "complete": false
             }
 
@@ -1146,10 +1146,10 @@
 
             {
               "id": 29,
-              "name": "repellat",
+              "name": "doloribus",
               "project_id": 88,
-              "created_at": "2020-02-14T10:16:51.583Z",
-              "updated_at": "2020-02-14T10:16:51.583Z",
+              "created_at": "2020-02-14T10:26:33.432Z",
+              "updated_at": "2020-02-14T10:26:33.432Z",
               "complete": false,
               "position": 4,
               "deadline": null
@@ -1194,7 +1194,7 @@
     + Body
 
             {
-              "name": "provident",
+              "name": "facere",
               "complete": false
             }
 
@@ -1221,7 +1221,7 @@
     + Body
 
             {
-              "name": "et",
+              "name": "magnam",
               "complete": false
             }
 
@@ -1269,8 +1269,8 @@
               "project_id": 92,
               "name": "Test_name",
               "position": 4,
-              "created_at": "2020-02-14T10:16:51.663Z",
-              "updated_at": "2020-02-14T10:16:51.670Z",
+              "created_at": "2020-02-14T10:26:33.500Z",
+              "updated_at": "2020-02-14T10:26:33.507Z",
               "complete": false,
               "deadline": null
             }
@@ -1302,8 +1302,8 @@
               "project_id": 93,
               "name": "Test_name",
               "position": 4,
-              "created_at": "2020-02-14T10:16:51.684Z",
-              "updated_at": "2020-02-14T10:16:51.691Z",
+              "created_at": "2020-02-14T10:26:33.522Z",
+              "updated_at": "2020-02-14T10:26:33.529Z",
               "complete": false,
               "deadline": null
             }
@@ -1347,7 +1347,7 @@
     + Body
 
             {
-              "name": "commodi",
+              "name": "est",
               "complete": false
             }
 
@@ -1411,10 +1411,10 @@
 
             {
               "id": 62,
-              "name": "omnis",
+              "name": "occaecati",
               "project_id": 97,
-              "created_at": "2020-02-14T10:16:51.768Z",
-              "updated_at": "2020-02-14T10:16:51.768Z",
+              "created_at": "2020-02-14T10:26:33.604Z",
+              "updated_at": "2020-02-14T10:26:33.604Z",
               "complete": false,
               "position": 4,
               "deadline": null
@@ -1572,7 +1572,7 @@
     + Body
 
             {
-              "username": "Celsius",
+              "username": "Fahrenheit",
               "password": "password",
               "password_confirmation": "password"
             }
@@ -1587,8 +1587,42 @@
 
             {
               "id": 70,
-              "username": "Celsius",
-              "password_digest": "$2a$04$l0WNtm6BzwEtBmdgeGzt.e9sSU8NqOaORNFnwmdizrfqCqHvVrWi6",
-              "created_at": "2020-02-14T10:16:51.933Z",
-              "updated_at": "2020-02-14T10:16:51.933Z"
+              "username": "Fahrenheit",
+              "password_digest": "$2a$04$craKjPS8peO2PzNP3yWEcOcZxF07F29v1g/Tjh2UPkrGxkVC26IZ2",
+              "created_at": "2020-02-14T10:26:33.755Z",
+              "updated_at": "2020-02-14T10:26:33.755Z"
+            }
+
++ Request do not create user
+**POST**&nbsp;&nbsp;`/api/v1/users`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "username": "",
+              "password": "",
+              "password_confirmation": ""
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+                "Password can't be blank",
+                "Password is the wrong length (should be 8 characters)",
+                "Username can't be blank",
+                "Username is too short (minimum is 3 characters)",
+                "Password confirmation doesn't match Password"
+              ]
             }
