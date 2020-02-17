@@ -7,6 +7,9 @@ jobs:
           RAILS_ENV: test
 
       - image: circleci/postgres:9.4
+        environment:
+          POSTGRES_PASSWORD: password
+
       - image: redis
 
     working_directory: ~/repo
