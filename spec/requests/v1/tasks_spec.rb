@@ -190,13 +190,13 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
   describe 'DELETE /api/v1/tasks/:id' do
     include Docs::V1::Tasks::Delete
-    let(:tasks) { create_list(:task, 3, project: project) }
+    let(:task) { create(:task, project: project) }
 
     context 'with valid id' do
       it 'deletes the task', :dox do
-        tasks
+        task
         expect do
-          delete api_v1_task_path(id: tasks.first.id), headers: headers
+          delete api_v1_task_path(task), headers: headers
         end.to change(Task, :count).by(-1)
 
         expect(response).to have_http_status(:no_content)
@@ -212,7 +212,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
     context 'when user unauthorized' do
       let(:headers) { { authorization: nil, accept: 'application/json' } }
 
-      before { delete api_v1_task_path(id: tasks.first.id), headers: headers }
+      before { delete api_v1_task_path(task), headers: headers }
 
       it 'returns an unauthorized status code', :dox do
         expect(response).to have_http_status(:unauthorized)
@@ -223,7 +223,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       let(:user_forbidden) { create(:user, username: 'test4') }
       let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
 
-      before { delete api_v1_task_path(id: tasks.first.id), headers: headers }
+      before { delete api_v1_task_path(task), headers: headers }
 
       it 'returns a forbidden status code', :dox do
         expect(response).to have_http_status(:forbidden)
