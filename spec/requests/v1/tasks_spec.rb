@@ -1,18 +1,23 @@
 RSpec.describe 'V1::Tasks API', type: :request do
   include Docs::V1::Tasks::Api
+
   let(:user) { create(:user) }
   let(:project) { create(:project, user: user) }
-  let!(:tasks) { create_list(:task, 3, project: project) }
-
   let(:headers) { { authorization: JsonWebToken.encode(user_id: user.id), accept: 'application/json' } }
 
   describe 'GET /api/v1/projects/:project_id/tasks' do
     include Docs::V1::Tasks::Index
+    let(:tasks) { create_list(:task, 3, project: project) }
 
-    context 'with valid project_id', :dox do
-      before { get api_v1_project_tasks_path(project), headers: headers }
+    context 'with valid project_id' do
+      before do
+        tasks
+        get api_v1_project_tasks_path(project), headers: headers
+      end
 
-      it { expect(response.parsed_body.size).to eq(3) }
+      it 'returns a tasks', :dox do
+        expect(response.parsed_body.size).to eq(3)
+      end
 
       it_behaves_like 'http status ok', 'tasks'
     end
@@ -23,31 +28,35 @@ RSpec.describe 'V1::Tasks API', type: :request do
       it_behaves_like 'http status not_found'
     end
 
-    context 'when user unauthorized', :dox do
+    context 'when user unauthorized' do
       let(:headers) { { authorization: nil, accept: 'application/json' } }
 
       before { get api_v1_project_tasks_path(project), headers: headers }
 
-      it { expect(response).to have_http_status(:unauthorized) }
+      it 'returns an unauthorized status code', :dox do
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
 
-    context 'when action is forbidden', :dox do
+    context 'when action is forbidden' do
       let(:user_forbidden) { create(:user, username: 'test12') }
       let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
 
       before { get api_v1_project_tasks_path(project), headers: headers }
 
-      it { expect(response).to have_http_status(:forbidden) }
+      it 'returns a forbidden status code', :dox do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
   end
 
   describe 'POST /api/v1/projects/:project_id/tasks' do
     include Docs::V1::Tasks::Create
 
-    context 'with valid params', :dox do
+    context 'with valid params' do
       let(:task_params) { attributes_for(:task) }
 
-      it do
+      it 'creates a new task', :dox do
         expect do
           post api_v1_project_tasks_path(project), headers: headers, params: task_params, as: :json
         end.to change(Task, :count).by(1)
@@ -57,31 +66,37 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
     end
 
-    context 'with invalid params', :dox do
+    context 'with invalid params' do
       let(:task_params) { { name: nil } }
 
       before { post api_v1_project_tasks_path(project), headers: headers, params: task_params, as: :json }
 
-      it { expect(response).to have_http_status(:unprocessable_entity) }
+      it 'returns unprocessable entity', :dox do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
 
-    context 'when user unauthorized', :dox do
+    context 'when user unauthorized' do
       let(:task_params) { attributes_for(:task) }
       let(:headers) { { authorization: nil, accept: 'application/json' } }
 
       before { post api_v1_project_tasks_path(project), headers: headers, params: task_params, as: :json }
 
-      it { expect(response).to have_http_status(:unauthorized) }
+      it 'returns an unauthorized status code', :dox do
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
 
-    context 'when action is forbidden', :dox do
+    context 'when action is forbidden' do
       let(:task_params) { attributes_for(:task) }
       let(:user_forbidden) { create(:user, username: 'test1') }
       let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
 
       before { post api_v1_project_tasks_path(project), headers: headers, params: task_params, as: :json }
 
-      it { expect(response).to have_http_status(:forbidden) }
+      it 'returns a forbidden status code', :dox do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
   end
 
@@ -89,41 +104,49 @@ RSpec.describe 'V1::Tasks API', type: :request do
     include Docs::V1::Tasks::Edit
     let(:task) { create(:task, project: project) }
 
-    context 'with valid params', :dox do
+    context 'with valid params' do
       let(:edite_task) { { name: 'Test_name' } }
 
       before { put api_v1_task_path(task), headers: headers, params: edite_task, as: :json }
 
-      it { expect(response.body).to include(edite_task[:name]) }
+      it 'updates the task', :dox do
+        expect(response.body).to include(edite_task[:name])
+      end
 
       it_behaves_like 'http status ok', 'task'
     end
 
-    context 'with invalid params', :dox do
+    context 'with invalid params' do
       let(:task_params) { { name: nil } }
 
       before { put api_v1_task_path(task), headers: headers, params: task_params, as: :json }
 
-      it { expect(response).to have_http_status(:unprocessable_entity) }
+      it 'returns unprocessable entity', :dox do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
 
-    context 'when user unauthorized', :dox do
+    context 'when user unauthorized' do
       let(:task_params) { attributes_for(:task) }
       let(:headers) { { authorization: nil, accept: 'application/json' } }
 
       before { put api_v1_task_path(task), headers: headers, params: task_params, as: :json }
 
-      it { expect(response).to have_http_status(:unauthorized) }
+      it 'returns an unauthorized status code', :dox do
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
 
-    context 'when action is forbidden', :dox do
+    context 'when action is forbidden' do
       let(:edite_task) { { name: 'Test_name' } }
       let(:user_forbidden) { create(:user, username: 'test23') }
       let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
 
       before { put api_v1_task_path(task), headers: headers, params: edite_task, as: :json }
 
-      it { expect(response).to have_http_status(:forbidden) }
+      it 'returns a forbidden status code', :dox do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
   end
 
@@ -143,29 +166,35 @@ RSpec.describe 'V1::Tasks API', type: :request do
       it_behaves_like 'http status not_found'
     end
 
-    context 'when user unauthorized', :dox do
+    context 'when user unauthorized' do
       let(:headers) { { authorization: nil, accept: 'application/json' } }
 
       before { get api_v1_task_path(task), headers: headers }
 
-      it { expect(response).to have_http_status(:unauthorized) }
+      it 'returns an unauthorized status code', :dox do
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
 
-    context 'when action is forbidden', :dox do
+    context 'when action is forbidden' do
       let(:user_forbidden) { create(:user, username: 'test3') }
       let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
 
       before { get api_v1_task_path(task), headers: headers }
 
-      it { expect(response).to have_http_status(:forbidden) }
+      it 'returns a forbidden status code', :dox do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
   end
 
   describe 'DELETE /api/v1/tasks/:id' do
     include Docs::V1::Tasks::Delete
+    let(:tasks) { create_list(:task, 3, project: project) }
 
-    context 'with valid id', :dox do
-      it do
+    context 'with valid id' do
+      it 'deletes the task', :dox do
+        tasks
         expect do
           delete api_v1_task_path(id: tasks.first.id), headers: headers
         end.to change(Task, :count).by(-1)
@@ -180,21 +209,25 @@ RSpec.describe 'V1::Tasks API', type: :request do
       it_behaves_like 'http status not_found'
     end
 
-    context 'when user unauthorized', :dox do
+    context 'when user unauthorized' do
       let(:headers) { { authorization: nil, accept: 'application/json' } }
 
       before { delete api_v1_task_path(id: tasks.first.id), headers: headers }
 
-      it { expect(response).to have_http_status(:unauthorized) }
+      it 'returns an unauthorized status code', :dox do
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
 
-    context 'when action is forbidden', :dox do
+    context 'when action is forbidden' do
       let(:user_forbidden) { create(:user, username: 'test4') }
       let(:headers) { { authorization: JsonWebToken.encode(user_id: user_forbidden.id), accept: 'application/json' } }
 
       before { delete api_v1_task_path(id: tasks.first.id), headers: headers }
 
-      it { expect(response).to have_http_status(:forbidden) }
+      it 'returns a forbidden status code', :dox do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
   end
 end

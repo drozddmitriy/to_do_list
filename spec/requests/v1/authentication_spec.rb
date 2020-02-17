@@ -23,20 +23,24 @@ RSpec.describe 'V1::Authentications API', type: :request do
     include Docs::V1::Authentications::Delete
     let(:user) { create(:user) }
 
-    context 'when logout user', :dox do
+    context 'when the user is authorized' do
       let(:headers) { { authorization: JsonWebToken.encode(user_id: user.id), accept: 'application/json' } }
 
       before { delete api_v1_authentications_path, headers: headers }
 
-      it { expect(response).to have_http_status(:no_content) }
+      it 'logout user', :dox do
+        expect(response).to have_http_status(:no_content)
+      end
     end
 
-    context 'when user unauthorized', :dox do
+    context 'when user unauthorized' do
       let(:headers) { { authorization: nil, accept: 'application/json' } }
 
       before { delete api_v1_authentications_path, headers: headers }
 
-      it { expect(response).to have_http_status(:unauthorized) }
+      it 'returns an unauthorized status code', :dox do
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
   end
 end
