@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "properties": {
+      "id": { "type": "integer" },
+      "name": { "type": "string" },
+      "user_id": { "type": "integer" }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "array",
+  "items": {
+    "properties": {
+      "id": { "type": "integer" },
+      "name": { "type": "string" },
+      "project_id": { "type": "integer" },
+      "complete": { "type": "boolean" },
+      "deadline": { "type": ["null", "string"] },
+      "position": { "type": "integer" }
+    }
+  }
+}

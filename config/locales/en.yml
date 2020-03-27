@@ -1,0 +1,9 @@
+en:
+  errors:
+    messages:
+      carrierwave_processing_error: 'Failed to be processed'
+      carrierwave_integrity_error: 'Is not an allowed file type'
+      authentications_error: 'Invalid password'
+      can_can_error: 'Access denied'
+      jwt_error: 'Invalid token'
+      position_error: 'Cant be greater than tasks count'
