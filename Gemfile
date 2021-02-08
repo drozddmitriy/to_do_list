@@ -10,7 +10,7 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'
 
 # Storage
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'fog-core', '2.1.0'
 gem 'fog-google'
 gem 'google-cloud-storage', '~> 1.11', require: false
